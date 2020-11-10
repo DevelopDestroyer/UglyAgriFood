@@ -13,11 +13,11 @@ public class BaseEntity {
     protected Long id;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "CREATED_AT", nullable = false)
+    @Column(name = "created_at", nullable = false)
     private Date createdAt;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "UPDATED_AT", nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
     @PrePersist
