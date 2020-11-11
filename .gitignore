@@ -37,4 +37,4 @@ out/
 .vscode/
 
 ### querydsl ###
-/src/main/querydsl/
+/api/src/main/querydsl/
