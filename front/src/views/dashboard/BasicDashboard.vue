@@ -102,8 +102,8 @@
                 class="rounded-circle"
                 width="100"
               />
-              <h2 class="font-weight-regular">Angela Dominic</h2>
-              <h6 class="op-5 font-weight-regular">Web Designer & Developer</h6>
+              <h2 class="font-weight-regular">이태호</h2>
+              <h6 class="op-5 font-weight-regular">웹개발자</h6>
               <v-btn
                 color="deep-purple accent-2"
                 x-large
@@ -258,7 +258,7 @@ const gradients = [
   ["#6c757d"],
   ["#6c757d"],
   ["#6c757d", "#6c757d", "#6c757d"],
-  ["#21c1d6", "21c1d6"],
+  ["#21c1d6", "#21c1d6"],
   ["#21c1d6", "#21c1d6", "#21c1d6"],
   ["#21c1d6", "#21c1d6", "#21c1d6"]
 ];

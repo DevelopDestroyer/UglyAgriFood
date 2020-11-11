@@ -86,7 +86,21 @@ export default {
         title: "Basic Table",
         icon: "mdi-table-column-width",
         to: "/pages/tables-simple"
+      },
+
+
+      {
+        title: "메인",
+        icon: "mdi-table-column-width",
+        to: "/pages/Main"
+      },
+      {
+        title: "제품상세",
+        icon: "mdi-table-column-width",
+        to: "/pages/ProductDetail"
       }
+
+
     ]
   }),
   computed: {
