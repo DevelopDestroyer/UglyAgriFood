@@ -14,11 +14,7 @@ import javax.persistence.*;
 public class Product extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User User;
-
-    @ManyToOne
-    @JoinColumn(name = "retail_product", nullable = false)
-    private RetailProduct retailProduct;
+    private User user;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -26,9 +22,13 @@ public class Product extends BaseEntity {
     @Column(name = "price", nullable = false)
     private Long price;
 
+    @Column(name = "image_url", nullable = false)
+    private String imageUrl;
+
     @Column(name = "category", nullable = false)
     private String category;
 
-    @Column(name = "image_url")
-    private String imageUrl;
+    @ManyToOne
+    @JoinColumn(name = "retail_product_id", nullable = false)
+    private RetailProduct retailProduct;
 }

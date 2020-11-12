@@ -17,8 +17,7 @@ public class Comment extends BaseEntity {
     private User user;
 
     @ManyToOne
-//    @JoinColumn(name = "product_id", nullable = false)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @Column(name = "comment", nullable = false)
