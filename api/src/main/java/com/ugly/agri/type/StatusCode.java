@@ -9,5 +9,5 @@ public enum StatusCode {
     OK("SUCCESS"),
     FAIL("ERROR");
 
-    private String message;
+    private final String message;
 }

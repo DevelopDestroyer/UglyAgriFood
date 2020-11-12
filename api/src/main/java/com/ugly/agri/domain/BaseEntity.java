@@ -1,6 +1,7 @@
 package com.ugly.agri.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,8 +13,9 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
+    @Setter
     @Column(name = "is_deleted", nullable = false)
-    private boolean isDeleted;
+    private Boolean isDeleted;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at", nullable = false)
@@ -23,6 +25,7 @@ public class BaseEntity {
     @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
+    @Setter
     @Column(name = "deleted_at")
     private Date deletedAt;
 

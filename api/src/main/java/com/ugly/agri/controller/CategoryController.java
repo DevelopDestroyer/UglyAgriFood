@@ -16,7 +16,7 @@ import java.util.List;
 @Api(tags = {"1. Category"})
 @AllArgsConstructor
 public class CategoryController {
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     @ApiOperation(value = "전체 카테고리 조회")
     @GetMapping("/categories")

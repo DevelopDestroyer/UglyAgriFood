@@ -74,21 +74,21 @@ public class H2Configuration {
         List<User> list = Lists.newArrayList();
 
         list.add(User.builder()
-                .userId("admin")
+                .email("admin")
                 .password("admin")
                 .name("관리자")
                 .isSeller(true)
                 .build());
 
         list.add(User.builder()
-                .userId("chu")
+                .email("chu")
                 .password("admin")
                 .name("추대윤")
                 .isSeller(true)
                 .build());
 
         list.add(User.builder()
-                .userId("lee")
+                .email("lee")
                 .password("admin")
                 .name("이태호")
                 .isSeller(false)
