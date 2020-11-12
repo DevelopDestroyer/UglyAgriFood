@@ -13,5 +13,5 @@ public enum CategoryType {
     PROCESSED_PRODUCTS("가공품"),
     ETC("기타");
 
-    private String category;
+    private final String category;
 }
