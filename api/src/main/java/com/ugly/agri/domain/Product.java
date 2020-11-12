@@ -1,5 +1,6 @@
 package com.ugly.agri.domain;
 
+import com.ugly.agri.type.CategoryType;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,7 +27,8 @@ public class Product extends BaseEntity {
     private String imageUrl;
 
     @Column(name = "category", nullable = false)
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private CategoryType category;
 
     @ManyToOne
     @JoinColumn(name = "retail_product_id", nullable = false)
