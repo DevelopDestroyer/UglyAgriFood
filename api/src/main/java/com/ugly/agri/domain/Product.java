@@ -16,6 +16,10 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User User;
 
+    @ManyToOne
+    @JoinColumn(name = "retail_product", nullable = false)
+    private RetailProduct retailProduct;
+
     @Column(name = "name", nullable = false)
     private String name;
 
