@@ -1,10 +1,9 @@
 package com.ugly.agri.config;
 
 import com.google.common.collect.Lists;
-import com.ugly.agri.domain.Comment;
-import com.ugly.agri.domain.RetailProduct;
-import com.ugly.agri.domain.User;
+import com.ugly.agri.domain.*;
 import com.ugly.agri.repository.*;
+import com.ugly.agri.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import org.h2.tools.Server;
 import org.jsoup.Jsoup;
@@ -23,11 +22,11 @@ import java.util.List;
 @Profile("local")
 @RequiredArgsConstructor
 public class H2Configuration {
-    private final RetailProductRepository retailProductRepository;
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
     private final CommentRepository commentRepository;
     private final ProductRepository productRepository;
+    private final RetailProductRepository retailProductRepository;
 
     @Bean
     public Server h2TcpServer() throws SQLException {
@@ -38,7 +37,10 @@ public class H2Configuration {
     public void setTestData() throws IOException {
         crawling();
         List<User> userList = userRepository.saveAll(getUserList());
-        commentRepository.saveAll(getCommentList(userList));
+        List<Product> productList = productRepository.saveAll(
+                getProductList(userList, retailProductRepository.saveAll(getRetailProductList())));
+        orderRepository.saveAll(getOrderList(userList, productList));
+        commentRepository.saveAll(getCommentList(userList, productList));
     }
 
     public void crawling() throws IOException {
@@ -95,24 +97,123 @@ public class H2Configuration {
         return list;
     }
 
-    private List<Comment> getCommentList(List<User> userList) {
+    private List<RetailProduct> getRetailProductList() {
+        List<RetailProduct> list = Lists.newArrayList();
+
+        list.add(RetailProduct.builder()
+                .name("사과")
+                .kind("후지(10개)")
+                .grade("상품")
+                .todayAvgPrice("27,138")
+                .oneDayAvgPrice("27,507")
+                .oneWeekAvgPrice("29,582")
+                .twoWeekAvgPrice("29,782")
+                .oneMonthAvgPrice("-")
+                .oneYearAvgPrice("19,225")
+                .build());
+
+        list.add(RetailProduct.builder()
+                .name("감자")
+                .kind("수미(100g)")
+                .grade("상품")
+                .todayAvgPrice("300")
+                .oneDayAvgPrice("296")
+                .oneWeekAvgPrice("295")
+                .twoWeekAvgPrice("293")
+                .oneMonthAvgPrice("294")
+                .oneYearAvgPrice("217")
+                .build());
+
+        list.add(RetailProduct.builder()
+                .name("고구마")
+                .kind("밤(1kg)")
+                .grade("상품")
+                .todayAvgPrice("5,776")
+                .oneDayAvgPrice("5,579")
+                .oneWeekAvgPrice("5,617")
+                .twoWeekAvgPrice("5,809")
+                .oneMonthAvgPrice("5,736")
+                .oneYearAvgPrice("4,289")
+                .build());
+
+        return list;
+    }
+
+    private List<Product> getProductList(List<User> userList, List<RetailProduct> retailProductList) {
+        List<Product> list = Lists.newArrayList();
+
+        list.add(Product.builder()
+                .user(userList.get(1))
+                .name("못난이 사과")
+                .price(10000L)
+                .imageUrl("img/0.jpg")
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .retailProduct(retailProductList.get(0))
+                .build());
+
+        list.add(Product.builder()
+                .user(userList.get(1))
+                .name("못난이 감자")
+                .price(20000L)
+                .imageUrl("img/1.jpg")
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .retailProduct(retailProductList.get(1))
+                .build());
+
+        list.add(Product.builder()
+                .user(userList.get(1))
+                .name("못난이 고구마")
+                .price(30000L)
+                .imageUrl("img/2.jpg")
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .retailProduct(retailProductList.get(2))
+                .build());
+
+        return list;
+    }
+
+    private List<Order> getOrderList(List<User> userList, List<Product> productList) {
+        List<Order> list = Lists.newArrayList();
+
+        list.add(Order.builder()
+                .userId(userList.get(1))
+                .product(productList.get(0))
+                .quantity(1)
+                .build());
+
+        list.add(Order.builder()
+                .userId(userList.get(2))
+                .product(productList.get(1))
+                .quantity(5)
+                .build());
+
+        list.add(Order.builder()
+                .userId(userList.get(2))
+                .product(productList.get(2))
+                .quantity(10)
+                .build());
+
+        return list;
+    }
+
+    private List<Comment> getCommentList(List<User> userList, List<Product> productList) {
         List<Comment> list = Lists.newArrayList();
 
         list.add(Comment.builder()
                 .user(userList.get(0))
-                .product(null)
+                .product(productList.get(0))
                 .comment("난 관리자다")
                 .build());
 
         list.add(Comment.builder()
                 .user(userList.get(1))
-                .product(null)
+                .product(productList.get(1))
                 .comment("난 판매자다")
                 .build());
 
         list.add(Comment.builder()
                 .user(userList.get(2))
-                .product(null)
+                .product(productList.get(1))
                 .comment("난 구매자다")
                 .build());
 

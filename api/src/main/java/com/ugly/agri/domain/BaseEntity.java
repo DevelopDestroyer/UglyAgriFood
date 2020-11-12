@@ -12,8 +12,8 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    @Column(name = "is_active", nullable = false)
-    private boolean isActive;
+    @Column(name = "is_deleted", nullable = false)
+    private boolean isDeleted;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at", nullable = false)
@@ -23,10 +23,13 @@ public class BaseEntity {
     @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
+    @Column(name = "deleted_at")
+    private Date deletedAt;
+
     @PrePersist
     protected void onPersist() {
         this.createdAt = this.updatedAt = new Date();
-        this.isActive = true;
+        this.isDeleted = false;
     }
 
     @PreUpdate
