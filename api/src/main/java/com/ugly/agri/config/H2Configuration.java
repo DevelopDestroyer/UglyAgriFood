@@ -3,6 +3,7 @@ package com.ugly.agri.config;
 import com.google.common.collect.Lists;
 import com.ugly.agri.domain.*;
 import com.ugly.agri.repository.*;
+import com.ugly.agri.type.CategoryType;
 import lombok.RequiredArgsConstructor;
 import org.h2.tools.Server;
 import org.jsoup.Jsoup;
@@ -146,7 +147,7 @@ public class H2Configuration {
                 .name("못난이 사과")
                 .price(10000L)
                 .imageUrl("img/0.jpg")
-                .category("과일")
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .retailProduct(retailProductList.get(0))
                 .build());
 
@@ -155,7 +156,7 @@ public class H2Configuration {
                 .name("못난이 감자")
                 .price(20000L)
                 .imageUrl("img/1.jpg")
-                .category("채소")
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .retailProduct(retailProductList.get(1))
                 .build());
 
@@ -164,7 +165,7 @@ public class H2Configuration {
                 .name("못난이 고구마")
                 .price(30000L)
                 .imageUrl("img/2.jpg")
-                .category("채")
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .retailProduct(retailProductList.get(2))
                 .build());
 
