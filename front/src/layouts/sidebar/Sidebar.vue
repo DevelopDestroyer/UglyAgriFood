@@ -98,8 +98,27 @@ export default {
         title: "제품상세",
         icon: "mdi-table-column-width",
         to: "/pages/ProductDetail"
+      },
+      {
+        title: "제품리스트",
+        icon: "mdi-table-column-width",
+        to: "/pages/ProductList"
+      },
+      {
+        title: "마이페이지",
+        icon: "mdi-table-column-width",
+        to: "/pages/myInfo"
+      },
+      {
+        title: "판매 글쓰기",
+        icon: "mdi-table-column-width",
+        to: "/pages/productUpload"
+      },
+      {
+        title: "구매내역",
+        icon: "mdi-table-column-width",
+        to: "/pages/buyHistory"
       }
-
 
     ]
   }),

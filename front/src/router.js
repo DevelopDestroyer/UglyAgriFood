@@ -52,7 +52,28 @@ export default new Router({
                     name: 'Product Detail',
                     path: 'pages/productDetail',
                     component: () => import('@/views/pages/ProductDetail'),
+                },
+                {
+                    name: 'Product List',
+                    path: 'pages/productList',
+                    component: () => import('@/views/pages/ProductList'),
+                },
+                {
+                    name: 'My infomation',
+                    path: 'pages/myInfo',
+                    component: () => import('@/views/pages/MyInfo'),
+                },
+                {
+                    name: 'Product upload',
+                    path: 'pages/productUpload',
+                    component: () => import('@/views/pages/ProductUpload'),
+                },
+                {
+                    name: 'Buy History',
+                    path: 'pages/buyHistory',
+                    component: () => import('@/views/pages/BuyHistory'),
                 }
+
 
             ]
         },

@@ -6,6 +6,9 @@
           <v-card-text class="pa-5">
             <div class="text-center">
               <v-row class="mt-6">
+                <v-col cols="12" style="text-align: center;">
+                  <h4 class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">못난이 푸드를 할인된 가격에 만나보세요!</h4><br/>
+                </v-col>
                 <v-col cols="4">
                   <img
                       src="img/1.png"
@@ -80,10 +83,10 @@
                 <tr>
                   <td style="width:70%;">
                     <!--h5 class="title blue-grey--text text--darken-2 font-weight-regular mb-4">평균시세보다 50% 이상 저렴해요!</h5-->
-                    <span style="color:black;" class="mx-4 blue-grey--text">평균시세보다 50% 이상 저렴해요!</span>
+                    <span style="color:black; font-size: 18px;" class="mx-4 blue-grey--text"><b>평균시세보다 50% 이상 저렴해요!</b></span>
                   </td>
                   <td style="text-align: right;">
-                    <span class="mx-4 success--text">전체보기</span>
+                    <span class="mx-4 success--text"><b style="color:#f76707; font-size: 14px;">더보기＞</b></span>
                   </td>
                 </tr>
               </table>
@@ -99,10 +102,14 @@
                       <img
                           src="img/1.png"
                           alt="product"
-                          width="100"
+                          width="100px"
+                          style="border-radius: 7px;
+                            -moz-border-radius: 7px;
+                            -khtml-border-radius: 7px;
+                            -webkit-border-radius: 7px;"
                       />
                       <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:yellow;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
+                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
                       <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
                     </div>
                   </td>
@@ -111,10 +118,14 @@
                       <img
                           src="img/2.png"
                           alt="product"
-                          width="100"
+                          width="100px"
+                          style="border-radius: 7px;
+                            -moz-border-radius: 7px;
+                            -khtml-border-radius: 7px;
+                            -webkit-border-radius: 7px;"
                       />
                       <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:yellow;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
+                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
                       <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
                     </div>
                   </td>
@@ -123,10 +134,14 @@
                       <img
                           src="img/3.png"
                           alt="product"
-                          width="100"
+                          width="100px"
+                          style="border-radius: 7px;
+                            -moz-border-radius: 7px;
+                            -khtml-border-radius: 7px;
+                            -webkit-border-radius: 7px;"
                       />
                       <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:yellow;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
+                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
                       <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
                     </div>
                   </td>
@@ -135,10 +150,14 @@
                       <img
                           src="img/5.png"
                           alt="product"
-                          width="100"
+                          width="100px"
+                          style="border-radius: 7px;
+                            -moz-border-radius: 7px;
+                            -khtml-border-radius: 7px;
+                            -webkit-border-radius: 7px;"
                       />
                       <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:yellow;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
+                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
                       <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
                     </div>
                   </td>
@@ -147,10 +166,14 @@
                       <img
                           src="img/4.png"
                           alt="product"
-                          width="100"
+                          width="100px"
+                          style="border-radius: 7px;
+                            -moz-border-radius: 7px;
+                            -khtml-border-radius: 7px;
+                            -webkit-border-radius: 7px;"
                       />
                       <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:yellow;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
+                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
                       <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
                     </div>
                   </td>
@@ -159,10 +182,14 @@
                       <img
                           src="img/6.png"
                           alt="product"
-                          width="100"
+                          width="100px"
+                          style="border-radius: 7px;
+                            -moz-border-radius: 7px;
+                            -khtml-border-radius: 7px;
+                            -webkit-border-radius: 7px;"
                       />
                       <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:yellow;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
+                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
                       <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
                     </div>
                   </td>
