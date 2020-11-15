@@ -13,7 +13,8 @@ public enum ErrorCode {
     NULL_POINT("A002", "null point 에러 입니다."),
 
     // USER
-    USER_NONE("U003", "존재하지 않는 사용자입니다."),
+    USER_NONE("U001", "존재하지 않는 사용자입니다."),
+    LOGIN_INPUT_INVALID("U002", "이메일, 비밀번호를 확인해주세요."),
     ;
 
     private final String code;

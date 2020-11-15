@@ -2,6 +2,7 @@ package com.ugly.agri.service;
 
 import com.google.common.collect.Lists;
 import com.ugly.agri.domain.User;
+import com.ugly.agri.dto.SignInDTO;
 import com.ugly.agri.dto.SignUpDTO;
 import com.ugly.agri.dto.UserDTO;
 import com.ugly.agri.exception.CustomException;
@@ -50,5 +51,14 @@ public class UserService {
     private User searchUser(Long id) {
         return userRepository.findByIdAndIsDeletedFalse(id)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NONE));
+    }
+
+    private User searchUser(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password)
+                .orElseThrow(() -> new CustomException(ErrorCode.LOGIN_INPUT_INVALID));
+    }
+
+    public UserDTO loginUser(SignInDTO signInDTO) {
+        return User.toDTO(searchUser(signInDTO.getEmail(), signInDTO.getPassword()));
     }
 }
