@@ -1,6 +1,5 @@
 package com.ugly.agri.domain;
 
-import com.ugly.agri.dto.UserDTO;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -26,13 +25,4 @@ public class User extends BaseEntity {
     @Setter
     @Column(name = "is_seller", nullable = false)
     private Boolean isSeller;
-
-    static public UserDTO toDTO(User user) {
-        return UserDTO.builder()
-                .id(user.getId())
-                .email(user.getEmail())
-                .name(user.getName())
-                .isSeller(user.getIsSeller())
-                .build();
-    }
 }

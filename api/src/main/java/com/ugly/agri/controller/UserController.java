@@ -36,16 +36,14 @@ public class UserController {
 
     @ApiOperation(value = "유저 생성. 회원가입")
     @PostMapping("/users")
-    public Response<String> createUser(@RequestBody @Valid SignUpDTO signUpDTO) {
-        userService.createUser(signUpDTO);
-        return Response.ok();
+    public Response<UserDTO> createUser(@RequestBody @Valid SignUpDTO signUpDTO) {
+        return Response.ok(userService.createUser(signUpDTO));
     }
 
     @ApiOperation(value = "유저 수정")
     @PutMapping("/users/{id}")
-    public Response<String> updateUser(@PathVariable Long id, @RequestParam("isSeller") Boolean isSeller) {
-        userService.updateUser(id, isSeller);
-        return Response.ok();
+    public Response<UserDTO> updateUser(@PathVariable Long id, @RequestParam("isSeller") Boolean isSeller) {
+        return Response.ok(userService.updateUser(id, isSeller));
     }
 
     @ApiOperation(value = "유저 삭제")
@@ -57,7 +55,7 @@ public class UserController {
 
     @ApiOperation(value = "로그인")
     @PostMapping("/login")
-    public Response<UserDTO> loginUser(@RequestBody SignInDTO signInDTO) {
+    public Response<UserDTO> loginUser(@RequestBody @Valid SignInDTO signInDTO) {
         return Response.ok(userService.loginUser(signInDTO));
     }
 }

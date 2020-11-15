@@ -35,7 +35,7 @@ public class H2Configuration {
 
     @Bean
     public void setTestData() throws IOException {
-        crawling();
+//        crawling();
         List<User> userList = userRepository.saveAll(getUserList());
         List<Product> productList = productRepository.saveAll(
                 getProductList(userList, retailProductRepository.saveAll(getRetailProductList())));
@@ -146,6 +146,7 @@ public class H2Configuration {
                 .user(userList.get(1))
                 .name("못난이 사과")
                 .price(10000L)
+                .comment("흠집이 좀 있는데 단맛이 많아서 일반사과랑 맛이 똑같습니다.")
                 .imageUrl("img/0.jpg")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .retailProduct(retailProductList.get(0))
@@ -155,6 +156,7 @@ public class H2Configuration {
                 .user(userList.get(1))
                 .name("못난이 감자")
                 .price(20000L)
+                .comment("크기가 좀 작지만 맛있습니다!")
                 .imageUrl("img/1.jpg")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .retailProduct(retailProductList.get(1))
@@ -164,6 +166,7 @@ public class H2Configuration {
                 .user(userList.get(1))
                 .name("못난이 고구마")
                 .price(30000L)
+                .comment("에어프라이어에 해서 먹으면 맛있습니다~")
                 .imageUrl("img/2.jpg")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .retailProduct(retailProductList.get(2))

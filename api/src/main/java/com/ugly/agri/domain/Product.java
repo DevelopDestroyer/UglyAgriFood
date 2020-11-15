@@ -23,6 +23,9 @@ public class Product extends BaseEntity {
     @Column(name = "price", nullable = false)
     private Long price;
 
+    @Column(name = "comment", nullable = false)
+    private String comment;
+
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
