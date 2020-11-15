@@ -24,22 +24,22 @@ public class UserService {
         List<User> userList = userRepository.findByIsDeletedFalse();
         List<UserDTO> userDTOList = Lists.newArrayList();
 
-        userList.forEach(user -> userDTOList.add(User.toDTO(user)));
+        userList.forEach(user -> userDTOList.add(UserDTO.of(user)));
         return userDTOList;
     }
 
     public UserDTO getUser(Long id) {
-        return User.toDTO(searchUser(id));
+        return UserDTO.of(searchUser(id));
     }
 
-    public void createUser(SignUpDTO signUpDTO) {
-        userRepository.save(signUpDTO.toEntity());
+    public UserDTO createUser(SignUpDTO signUpDTO) {
+        return UserDTO.of(userRepository.save(signUpDTO.toEntity()));
     }
 
-    public void updateUser(Long id, Boolean isSeller) {
+    public UserDTO updateUser(Long id, Boolean isSeller) {
         User user = searchUser(id);
         user.setIsSeller(isSeller);
-        userRepository.save(user);
+        return UserDTO.of(userRepository.save(user));
     }
 
     public void deleteUser(Long id) {
@@ -48,7 +48,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    private User searchUser(Long id) {
+    public User searchUser(Long id) {
         return userRepository.findByIdAndIsDeletedFalse(id)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NONE));
     }
@@ -59,6 +59,6 @@ public class UserService {
     }
 
     public UserDTO loginUser(SignInDTO signInDTO) {
-        return User.toDTO(searchUser(signInDTO.getEmail(), signInDTO.getPassword()));
+        return UserDTO.of(searchUser(signInDTO.getEmail(), signInDTO.getPassword()));
     }
 }

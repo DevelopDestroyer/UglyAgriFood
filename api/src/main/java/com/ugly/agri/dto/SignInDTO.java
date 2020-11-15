@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Getter
 public class SignInDTO implements Serializable {
     @NotBlank
-    String email;
+    private String email;
     @NotBlank
-    String password;
+    private String password;
 }
