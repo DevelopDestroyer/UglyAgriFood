@@ -3,6 +3,7 @@ package com.ugly.agri.controller;
 import com.ugly.agri.common.Response;
 import com.ugly.agri.dto.ProductDTO;
 import com.ugly.agri.dto.RequestProductDTO;
+import com.ugly.agri.dto.SearchProductDTO;
 import com.ugly.agri.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,13 +22,13 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    @ApiOperation(value = "전체 상품 조회")
+    @ApiOperation(value = "상품 리스트 조회")
     @GetMapping
-    public Response<List<ProductDTO>> getProducts() {
-        return Response.ok(productService.getProducts());
+    public Response<List<ProductDTO>> getProducts(SearchProductDTO searchProductDTO) {
+        return Response.ok(productService.getProductsByCondition(searchProductDTO));
     }
 
-    @ApiOperation(value = "상품 조회")
+    @ApiOperation(value = "상품 상세 조회")
     @GetMapping("/{id}")
     public Response<ProductDTO> getProduct(@PathVariable Long id) {
         return Response.ok(productService.getProduct(id));

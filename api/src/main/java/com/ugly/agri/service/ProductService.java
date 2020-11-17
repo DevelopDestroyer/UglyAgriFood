@@ -4,8 +4,10 @@ import com.google.common.collect.Lists;
 import com.ugly.agri.domain.Product;
 import com.ugly.agri.dto.ProductDTO;
 import com.ugly.agri.dto.RequestProductDTO;
+import com.ugly.agri.dto.SearchProductDTO;
 import com.ugly.agri.exception.CustomException;
 import com.ugly.agri.repository.ProductRepository;
+import com.ugly.agri.repository.ProductRepositorySupport;
 import com.ugly.agri.type.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,11 +20,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
-
+    private final ProductRepositorySupport productRepositorySupport;
     private final UserService userService;
 
-    public List<ProductDTO> getProducts() {
-        List<Product> productList = productRepository.findByIsDeletedFalse();
+    public List<ProductDTO> getProductsByCondition(SearchProductDTO searchProductDTO) {
+        List<Product> productList = productRepositorySupport.findByCondition(searchProductDTO);
         List<ProductDTO> productDTOList = Lists.newArrayList();
 
         productList.forEach(product -> productDTOList.add(ProductDTO.of(product)));

@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 public class CategoryService {
     public List<String> getCategories() {
         return Stream.of(CategoryType.values())
-                .map(m -> m.getCategory())
+                .map(m -> m.getCategoryName())
                 .collect(Collectors.toList());
     }
 }
