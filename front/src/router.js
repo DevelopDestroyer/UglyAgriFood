@@ -82,6 +82,11 @@ export default new Router({
                     name: 'My Sales List',
                     path: 'pages/mySalesList',
                     component: () => import('@/views/pages/MySalesList'),
+                },
+                {
+                    name: 'Join',
+                    path: 'pages/join',
+                    component: () => import('@/views/pages/Join'),
                 }
 
             ]

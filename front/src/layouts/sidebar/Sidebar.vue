@@ -128,6 +128,11 @@ export default {
         title: "나의 판매",
         icon: "mdi-table-column-width",
         to: "/pages/mySalesList"
+      },
+      {
+        title: "회원가입",
+        icon: "mdi-table-column-width",
+        to: "/pages/join"
       }
 
     ]
