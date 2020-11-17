@@ -118,6 +118,16 @@ export default {
         title: "구매내역",
         icon: "mdi-table-column-width",
         to: "/pages/buyHistory"
+      },
+      {
+        title: "나의 리뷰",
+        icon: "mdi-table-column-width",
+        to: "/pages/myReviewList"
+      },
+      {
+        title: "나의 판매",
+        icon: "mdi-table-column-width",
+        to: "/pages/mySalesList"
       }
 
     ]
