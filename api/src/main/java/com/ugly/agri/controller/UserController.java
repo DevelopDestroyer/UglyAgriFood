@@ -4,6 +4,7 @@ import com.ugly.agri.common.Response;
 import com.ugly.agri.dto.SignInDTO;
 import com.ugly.agri.dto.SignUpDTO;
 import com.ugly.agri.dto.UserDTO;
+import com.ugly.agri.dto.UserInfoDTO;
 import com.ugly.agri.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -42,8 +43,8 @@ public class UserController {
 
     @ApiOperation(value = "유저 수정")
     @PutMapping("/users/{id}")
-    public Response<UserDTO> updateUser(@PathVariable Long id, @RequestParam("isSeller") Boolean isSeller) {
-        return Response.ok(userService.updateUser(id, isSeller));
+    public Response<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserInfoDTO userInfoDTO) {
+        return Response.ok(userService.updateUser(id, userInfoDTO));
     }
 
     @ApiOperation(value = "유저 삭제")

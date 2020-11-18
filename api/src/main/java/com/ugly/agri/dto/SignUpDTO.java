@@ -14,14 +14,12 @@ public class SignUpDTO implements Serializable {
     private String password;
     @NotBlank
     private String name;
-    private Boolean isSeller;
 
     public User toEntity() {
         return User.builder()
                 .email(email)
                 .password(password)
                 .name(name)
-                .isSeller(isSeller != null && isSeller)
                 .build();
     }
 }
