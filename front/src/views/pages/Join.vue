@@ -35,10 +35,10 @@
               counter
               @click:append="show1 = !show1"
             ></v-text-field>
-            <div class="mt-4">
+            <!--div class="mt-4">
               <v-select :items="items" filled label="구매자/판매자를 선택해주세요" background-color="transparent"></v-select>
-            </div>
-            <v-btn class="text-capitalize mt-5 element-0" color="success">완료</v-btn>
+            </div-->
+            <v-btn class="text-capitalize mt-5 element-0" color="success" @click="testFunc()">완료</v-btn>
           </v-card-text>
         </v-card>
       </v-col>
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+//import { mapState } from "vuex";
+
 export default {
   name: "Profile",
 
@@ -66,6 +68,19 @@ export default {
     },
     items: ["구매자", "판매자", "America"]
   }),
+  methods: {
+    testFunc(){
+      console.log("API호스트2 : " + this.$store.state.API_HOST);
+      this.$store.dispatch('POST_USER', {
+        id : 'test1111'
+      }).then((result) => {
+        //this.$store.dispatch('store/GET_USER', this.checkbox3).then((result) => {
+        //  this.combobox3 = result;//안쪽 리설트
+        //})
+        console.log("결과" + result);//바깥 리설트
+      })
+    }
+  },
   components: {}
 };
 </script>

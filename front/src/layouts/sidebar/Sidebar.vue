@@ -43,7 +43,9 @@
       <!---Sidebar Items -->
     </v-list>
   </v-navigation-drawer>
+
 </template>
+
 
 <script>
 import { mapState } from "vuex";
