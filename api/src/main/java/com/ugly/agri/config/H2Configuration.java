@@ -77,21 +77,18 @@ public class H2Configuration {
                 .email("admin")
                 .password("admin")
                 .name("관리자")
-                .isSeller(true)
                 .build());
 
         list.add(User.builder()
                 .email("chu")
                 .password("admin")
                 .name("추대윤")
-                .isSeller(true)
                 .build());
 
         list.add(User.builder()
                 .email("lee")
                 .password("admin")
                 .name("이태호")
-                .isSeller(false)
                 .build());
 
         return list;

@@ -5,6 +5,7 @@ import com.ugly.agri.domain.User;
 import com.ugly.agri.dto.SignInDTO;
 import com.ugly.agri.dto.SignUpDTO;
 import com.ugly.agri.dto.UserDTO;
+import com.ugly.agri.dto.UserInfoDTO;
 import com.ugly.agri.exception.CustomException;
 import com.ugly.agri.repository.UserRepository;
 import com.ugly.agri.type.ErrorCode;
@@ -33,12 +34,15 @@ public class UserService {
     }
 
     public UserDTO createUser(SignUpDTO signUpDTO) {
+        if (isExistUserByEmail(signUpDTO.getEmail())) {
+            throw new CustomException(ErrorCode.EMAIL_DUPLICATION);
+        }
         return UserDTO.of(userRepository.save(signUpDTO.toEntity()));
     }
 
-    public UserDTO updateUser(Long id, Boolean isSeller) {
+    public UserDTO updateUser(Long id, UserInfoDTO userInfoDTO) {
         User user = searchUser(id);
-        user.setIsSeller(isSeller);
+        user.setPassword(userInfoDTO.getPassword());
         return UserDTO.of(userRepository.save(user));
     }
 
@@ -46,6 +50,10 @@ public class UserService {
         User user = searchUser(id);
         user.setIsDeleted(true);
         userRepository.save(user);
+    }
+
+    private boolean isExistUserByEmail(String email) {
+        return userRepository.existsByEmailAndIsDeletedFalse(email);
     }
 
     public User searchUser(Long id) {
