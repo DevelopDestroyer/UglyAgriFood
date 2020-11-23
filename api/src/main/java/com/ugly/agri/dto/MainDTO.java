@@ -1,9 +1,11 @@
 package com.ugly.agri.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 
+@Builder
 @Data
 public class MainDTO {
     private List<String> categoryNameList;
