@@ -72,8 +72,22 @@ export default new Router({
                     name: 'Buy History',
                     path: 'pages/buyHistory',
                     component: () => import('@/views/pages/BuyHistory'),
+                },
+                {
+                    name: 'My Review List',
+                    path: 'pages/myReviewList',
+                    component: () => import('@/views/pages/MyReviewList'),
+                },
+                {
+                    name: 'My Sales List',
+                    path: 'pages/mySalesList',
+                    component: () => import('@/views/pages/MySalesList'),
+                },
+                {
+                    name: 'Join',
+                    path: 'pages/join',
+                    component: () => import('@/views/pages/Join'),
                 }
-
 
             ]
         },

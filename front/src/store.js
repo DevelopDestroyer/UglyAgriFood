@@ -1,10 +1,20 @@
+import Axios from 'axios'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { BUS } from './views/pages/EventBus';
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+    components: { BUS },
     state: {
+        API_HOST: 'http://localhost:8080',
+        isLogin: false,
+        userEmail : '',
+        userName : '',
+        userSeq : '',
+
+
         Sidebar_drawer: null,
         Customizer_drawer: false,
         SidebarColor: 'white',
@@ -19,9 +29,48 @@ export default new Vuex.Store({
         },
         SET_SIDEBAR_COLOR (state, payload) {
             state.SidebarColor = payload
-        }, 
+        },
+        SET_API_HOST (state, payload) {
+            state.API_HOST = payload
+        },
+
     },
     actions: {
-
+        ///////////////////////////////////////////////////////////
+        //    * USER API
+        ///////////////////////////////////////////////////////////
+        POST_LOGIN (context, payload){
+            return Axios.post(this.state.API_HOST + '/api/login', {
+                'email' : payload.email,
+                'password': payload.password
+            })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                    BUS.$emit('alertModalOpen', error);
+                })
+        },
+        GET_USER (context, playload) {
+            return Axios.get(this.state.API_HOST + '/api/' + playload.test)
+                .then((result) => {
+                   return result.data.result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                })
+        },
+        POST_USER (context, payload) {
+            return Axios.post(this.state.API_HOST + '/api/users', {
+                'email' : payload.id,
+                'isSeller': true,
+                'name' : '테스트',
+                'password' : '1234'
+            })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                })
+        }
     }
 })

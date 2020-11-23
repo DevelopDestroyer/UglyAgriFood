@@ -43,7 +43,9 @@
       <!---Sidebar Items -->
     </v-list>
   </v-navigation-drawer>
+
 </template>
+
 
 <script>
 import { mapState } from "vuex";
@@ -118,6 +120,21 @@ export default {
         title: "구매내역",
         icon: "mdi-table-column-width",
         to: "/pages/buyHistory"
+      },
+      {
+        title: "나의 리뷰",
+        icon: "mdi-table-column-width",
+        to: "/pages/myReviewList"
+      },
+      {
+        title: "나의 판매",
+        icon: "mdi-table-column-width",
+        to: "/pages/mySalesList"
+      },
+      {
+        title: "회원가입",
+        icon: "mdi-table-column-width",
+        to: "/pages/join"
       }
 
     ]
