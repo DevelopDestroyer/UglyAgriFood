@@ -18,7 +18,7 @@ public class MainController {
     private final MainService mainService;
 
     @ApiOperation(value = "메인 데이터 조회 (카테고리 + 추천 상품 + 시세보다 저렴한 상품 + 연관 상품)")
-    @GetMapping
+    @GetMapping("/data")
     public Response<MainDTO> getMainData() {
         return Response.ok(mainService.getMainData());
     }
