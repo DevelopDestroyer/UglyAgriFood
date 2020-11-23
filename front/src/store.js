@@ -37,6 +37,22 @@ export default new Vuex.Store({
     },
     actions: {
         ///////////////////////////////////////////////////////////
+        //    * MAIN API
+        ///////////////////////////////////////////////////////////
+        GET_MAIN_DATA (context, payload) {
+            return Axios.get(this.state.API_HOST + '/api/main/data')
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                    //BUS.$emit('alertModalOpen', error);
+                })
+        },
+
+        ///////////////////////////////////////////////////////////
         //    * USER API
         ///////////////////////////////////////////////////////////
         POST_LOGIN (context, payload){

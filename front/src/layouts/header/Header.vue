@@ -196,6 +196,9 @@ export default {
 
     BUS.$on('alertModalOpen',function(fromData){
       console.log("알럿 모달 오픈 요청, FROM => " + fromData);
+      if(fromData == 'SUCCESS'){
+        return;
+      }
       vm.modalMsg = fromData;
       vm.dialog = false;
       vm.modalAlert = true;

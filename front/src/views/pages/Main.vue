@@ -71,6 +71,61 @@
         <v-card class="mb-7">
         </v-card>
       </v-col>
+
+
+      <v-col cols="12" lg="12">
+        <v-card class="mb-12">
+          <v-card-text class="pa-5">
+
+            <v-row class="my-1" align="center">
+              <!--h3 class="title blue-grey--text text--darken-2 font-weight-regular mb-4">평균시세보다 50% 이상 저렴해요!</h3>
+              <span class="mx-4 success--text">전체보기</span-->
+
+              <table style="width:100%;">
+                <tr>
+                  <td style="width:70%;">
+                    <span style="color:black; font-size: 18px;" class="mx-4 blue-grey--text" v-if="this.$store.state.userName == ''"><b>비회원님을 위한 추천상품</b></span>
+                    <span style="color:black; font-size: 18px;" class="mx-4 blue-grey--text" v-else><b>{{this.$store.state.userName }}님을 위한 추천상품</b></span>
+                  </td>
+                  <td style="text-align: right;">
+                    <span class="mx-4 success--text"><b style="color:#f76707; font-size: 14px;">더보기＞</b></span>
+                  </td>
+                </tr>
+              </table>
+            </v-row>
+
+            <v-divider class="mb-4"></v-divider>
+
+            <div style="width: auto; height: 220px; overflow-x: scroll; white-space: nowrap;">
+              <table>
+                <tr>
+                  <td valign="top" v-for="item in recommendProductList" v-bind:key="item.id">
+                    <div class="text-left"  style="width:110px; white-space: normal">
+                      <img
+                          src="img/1.png"
+                          alt="product"
+                          width="100px"
+                          style="border-radius: 7px;
+                            -moz-border-radius: 7px;
+                            -khtml-border-radius: 7px;
+                            -webkit-border-radius: 7px;"
+                      />
+                      <h6 class="font-weight-regular" style="line-height:12px;">{{item.name}}</h6>
+                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
+                      <h6 class="op-5 font-weight-regular">시세 평균 <span style="text-decoration:line-through"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
+                      <h4><b style="color:red;">60%</b> {{item.price}}원</h4>
+                    </div>
+                  </td>
+
+                </tr>
+              </table>
+            </div>
+
+          </v-card-text>
+        </v-card>
+      </v-col>
+
+
       <v-col cols="12" lg="12">
         <v-card class="mb-12">
           <v-card-text class="pa-5">
@@ -97,8 +152,8 @@
             <div style="width: auto; height: 220px; overflow-x: scroll; white-space: nowrap;">
               <table>
                 <tr>
-                  <td>
-                    <div class="text-center"  style="width:110px; white-space: normal">
+                  <td valign="top" v-for="item in cheapProductList" v-bind:key="item.id">
+                    <div class="text-left"  style="width:110px; white-space: normal">
                       <img
                           src="img/1.png"
                           alt="product"
@@ -108,170 +163,36 @@
                             -khtml-border-radius: 7px;
                             -webkit-border-radius: 7px;"
                       />
-                      <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
+                      <h6 class="font-weight-regular" style="line-height:12px;">{{item.name}}</h6>
                       <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center"  style="width:110px; white-space: normal">
-                      <img
-                          src="img/2.png"
-                          alt="product"
-                          width="100px"
-                          style="border-radius: 7px;
-                            -moz-border-radius: 7px;
-                            -khtml-border-radius: 7px;
-                            -webkit-border-radius: 7px;"
-                      />
-                      <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center"  style="width:110px; white-space: normal">
-                      <img
-                          src="img/3.png"
-                          alt="product"
-                          width="100px"
-                          style="border-radius: 7px;
-                            -moz-border-radius: 7px;
-                            -khtml-border-radius: 7px;
-                            -webkit-border-radius: 7px;"
-                      />
-                      <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center"  style="width:110px; white-space: normal">
-                      <img
-                          src="img/5.png"
-                          alt="product"
-                          width="100px"
-                          style="border-radius: 7px;
-                            -moz-border-radius: 7px;
-                            -khtml-border-radius: 7px;
-                            -webkit-border-radius: 7px;"
-                      />
-                      <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center"  style="width:110px; white-space: normal">
-                      <img
-                          src="img/4.png"
-                          alt="product"
-                          width="100px"
-                          style="border-radius: 7px;
-                            -moz-border-radius: 7px;
-                            -khtml-border-radius: 7px;
-                            -webkit-border-radius: 7px;"
-                      />
-                      <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-center"  style="width:110px; white-space: normal">
-                      <img
-                          src="img/6.png"
-                          alt="product"
-                          width="100px"
-                          style="border-radius: 7px;
-                            -moz-border-radius: 7px;
-                            -khtml-border-radius: 7px;
-                            -webkit-border-radius: 7px;"
-                      />
-                      <h6 class="font-weight-regular">[버섯스토리] 무농약 생송이버섯 330g</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.8/5 (781)</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:red;">60%</b> 4000원</h6>
+                      <h6 class="op-5 font-weight-regular">시세 평균 <span style="text-decoration:line-through"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
+                      <h4><b style="color:red;">60%</b> {{item.price}}원</h4>
                     </div>
                   </td>
 
                 </tr>
               </table>
-
             </div>
 
           </v-card-text>
         </v-card>
-              <v-card>
-                <v-card-text class="text-center pa-7">
-                  <img
-                      src="https://randomuser.me/api/portraits/men/81.jpg"
-                      alt="user"
-                      width="150px"
-                      class="img-fluid rounded-circle shadow-sm"
-                  />
-                  <h4 class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">Hanna Gover</h4>
-                  <h6 class="subtitle-2 font-weight-light">Accoubts Manager Amix corp</h6>
-                </v-card-text>
-              </v-card>
-            </v-col>
-            <v-col cols="12" lg="8">
-              <v-card>
-                <v-card-text>
-                  <h3 class="title blue-grey--text text--darken-2 font-weight-regular">Default Form</h3>
-                  <h6 class="subtitle-2 font-weight-light">All with vuetify element attributes</h6>
-                </v-card-text>
-                <v-divider></v-divider>
-                <v-card-text>
-                  <v-text-field
-                      v-model="dtext"
-                      label="Default Text e.g. 'George deo'"
-                      filled
-                      background-color="transparent"
-                  ></v-text-field>
-                  <v-text-field
-                      type="email"
-                      v-model="emailtext"
-                      label="Email e.g. 'example@gmail.com"
-                      filled
-                      background-color="transparent"
-                  ></v-text-field>
-                  <v-text-field
-                      v-model="password"
-                      filled
-                      background-color="transparent"
-                      :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                      :rules="[rules.required, rules.min]"
-                      :type="show1 ? 'text' : 'password'"
-                      name="input-10-1"
-                      label="Password"
-                      hint="At least 8 characters"
-                      counter
-                      @click:append="show1 = !show1"
-                  ></v-text-field>
-                  <v-textarea
-                      filled
-                      name="input-7-4"
-                      rows="3"
-                      label="Textarea"
-                      value
-                      background-color="transparent"
-                  ></v-textarea>
-                  <div class="mt-4">
-                    <v-select :items="items" filled label="Select Country" background-color="transparent"></v-select>
-                  </div>
-                  <v-btn class="text-capitalize mt-5 element-0" color="success">Submit</v-btn>
-                </v-card-text>
-              </v-card>
             </v-col>
           </v-row>
         </v-container>
       </template>
 
       <script>
+      import {BUS} from "@/views/pages/EventBus";
+
       export default {
         name: "Main",
 
         data: () => ({
+          //main data api
+          recommendProductList : [],
+          cheapProductList : [],
+          relatedProductList : [],
+
           dtext: "George deo",
           emailtext: "",
           password: "",
@@ -287,6 +208,33 @@
           },
           items: ["London", "India", "America"]
         }),
-        components: {}
+        components: {},
+        created () {
+          this.getMainData();
+        },
+        methods: {
+          getMainData(){
+            let vm = this;
+            this.$store.dispatch('GET_MAIN_DATA', {
+              'data':'getMaindata Req'
+            }).then((result) => {
+              //console.log("결과" + result);//바깥 리설트
+              //console.log("결과2" + result.statusCode);//바깥 리설트
+              //console.log("결과3" + result.data.statusCode);//바깥 리설트
+              //console.log("결과" + result.data);//바깥 리설트
+              if(result.data.statusCode == 'OK'){
+                console.log("정상응답");
+                vm.recommendProductList = result.data.data.recommendProductList;
+                vm.cheapProductList = result.data.data.cheapProductList;
+                vm.relatedProductList = result.data.data.relatedProductList;
+
+                console.log("메인데이터 api 응답 완료");
+              }
+              else{
+                BUS.$emit('alertModalOpen', result.data.message);
+              }
+            })
+          }
+        }
       };
       </script>
