@@ -34,7 +34,7 @@ public class MainService {
         // 추천 상품
         List<ProductDTO> recommendProductList = getRecommendProductList();
 
-        // 추천 상품
+        // 시세보다 저렴한 상품
         List<ProductDTO> cheapProductList = getCheapProductList();
 
         // 연관 상품
