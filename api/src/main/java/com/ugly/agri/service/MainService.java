@@ -76,6 +76,7 @@ public class MainService {
         List<ProductDTO> productDTOList = Lists.newArrayList();
 
         productList.forEach(product -> productDTOList.add(ProductDTO.of(product)));
+        Collections.shuffle(productDTOList);
         return productDTOList.stream().limit(5).collect(Collectors.toList());
     }
 }
