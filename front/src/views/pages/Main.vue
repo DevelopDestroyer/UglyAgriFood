@@ -113,7 +113,7 @@
                       <h6 class="font-weight-regular" style="line-height:12px;">{{item.name}}</h6>
                       <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
                       <h6 class="op-5 font-weight-regular">시세 평균 <span style="text-decoration:line-through"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
-                      <h4><b style="color:red;">60%</b> {{item.price}}원</h4>
+                      <h4><b style="color:red;">{{ item.pricePercent }}%</b> {{item.price}}원</h4>
                     </div>
                   </td>
 
@@ -166,7 +166,7 @@
                       <h6 class="font-weight-regular" style="line-height:12px;">{{item.name}}</h6>
                       <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
                       <h6 class="op-5 font-weight-regular">시세 평균 <span style="text-decoration:line-through"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
-                      <h4><b style="color:red;">60%</b> {{item.price}}원</h4>
+                      <h4><b style="color:red;">{{ item.pricePercent }}%</b> {{item.price}}원</h4>
                     </div>
                   </td>
 

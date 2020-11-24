@@ -173,7 +173,7 @@ export default {
           this.dialog = false;
           this.loginModalEmail = '';
           this.loginModalPassword = '';
-          console.log("로그인 완료 : " + result.data.email + ", " + result.data.name +", ");
+          console.log("로그인 완료 : " + result.data.data.email + ", " + result.data.data.name +", ");
         }
         else{
           BUS.$emit('alertModalOpen', result.data.message);

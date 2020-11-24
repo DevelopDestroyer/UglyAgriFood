@@ -49,6 +49,8 @@
 <script>
 //import { mapState } from "vuex";
 
+import {BUS} from "@/views/pages/EventBus";
+
 export default {
   name: "Profile",
 
@@ -72,11 +74,18 @@ export default {
     testFunc(){
       console.log("API호스트2 : " + this.$store.state.API_HOST);
       this.$store.dispatch('POST_USER', {
-        id : 'test1111'
+        id : this.emailtext,
+        isSeller : true,
+        name : this.dtext,
+        password : this.password
       }).then((result) => {
         //this.$store.dispatch('store/GET_USER', this.checkbox3).then((result) => {
         //  this.combobox3 = result;//안쪽 리설트
         //})
+        if(result.data.statusCode == 'OK'){
+          BUS.$emit('alertModalOpen', '가입이 완료되었습니다.');
+          location.href="/";
+        }
         console.log("결과" + result);//바깥 리설트
       })
     }

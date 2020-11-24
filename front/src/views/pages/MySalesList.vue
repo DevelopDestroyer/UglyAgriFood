@@ -4,7 +4,7 @@
       <v-col cols="12" lg="12">
         <v-card>
           <v-card-text class="text-left pa-3">
-            <h4 class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">나의 판매리스트</h4>
+            <h4 class="mt-0 title blue-grey--text text--darken-2 font-weight-regular">나의 판매리스트</h4>
             <v-tabs
                 v-model="active"
                 color=""

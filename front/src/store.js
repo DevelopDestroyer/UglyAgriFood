@@ -37,10 +37,26 @@ export default new Vuex.Store({
     },
     actions: {
         ///////////////////////////////////////////////////////////
+        //    * ORDER API
+        ///////////////////////////////////////////////////////////
+        GET_ORDER_DATA (context, payload) {
+            return Axios.get(this.state.API_HOST + '/api/main/data')
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                    //BUS.$emit('alertModalOpen', error);
+                })
+        },
+
+        ///////////////////////////////////////////////////////////
         //    * MAIN API
         ///////////////////////////////////////////////////////////
         GET_MAIN_DATA (context, payload) {
-            return Axios.get(this.state.API_HOST + '/api/main/data')
+            return Axios.get(this.state.API_HOST + '/api/orders?userId=' + this.state.userSeq)
                 .then((result) => {
                     console.log(payload.data);
                     return result
@@ -80,9 +96,13 @@ export default new Vuex.Store({
             return Axios.post(this.state.API_HOST + '/api/users', {
                 'email' : payload.id,
                 'isSeller': true,
-                'name' : '테스트',
-                'password' : '1234'
+                'name' : payload.name,
+                'password' : payload.password
             })
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
                 .catch(error => {
                     //에러팝업창
                     console.log(error);
