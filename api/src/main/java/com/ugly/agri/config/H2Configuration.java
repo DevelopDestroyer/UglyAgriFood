@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -142,7 +143,7 @@ public class H2Configuration {
         list.add(Product.builder()
                 .user(userList.get(1))
                 .name("못난이 사과")
-                .price(10000L)
+                .price(10000)
                 .comment("흠집이 좀 있는데 단맛이 많아서 일반사과랑 맛이 똑같습니다.")
                 .imageUrl("img/0.jpg")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
@@ -152,7 +153,7 @@ public class H2Configuration {
         list.add(Product.builder()
                 .user(userList.get(1))
                 .name("못난이 감자")
-                .price(20000L)
+                .price(20000)
                 .comment("크기가 좀 작지만 맛있습니다!")
                 .imageUrl("img/1.jpg")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
@@ -162,7 +163,7 @@ public class H2Configuration {
         list.add(Product.builder()
                 .user(userList.get(1))
                 .name("못난이 고구마")
-                .price(30000L)
+                .price(30000)
                 .comment("에어프라이어에 해서 먹으면 맛있습니다~")
                 .imageUrl("img/2.jpg")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)

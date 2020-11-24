@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,7 +59,9 @@ public class MainService {
         List<Product> productList = productRepository.findByIsDeletedFalse();
         List<ProductDTO> productDTOList = Lists.newArrayList();
 
-        List<Product> filteredProductList = productList.stream().filter(product -> (Integer.parseInt(product.getRetailProduct().getTodayAvgPrice().replaceAll(",", "")) / 2) > product.getPrice()).collect(Collectors.toList());
+        List<Product> filteredProductList = productList.stream()
+                .filter(product -> Integer.parseInt(product.getRetailProduct().getTodayAvgPrice().replaceAll(",", "")) / 2 > product.getPrice())
+                .collect(Collectors.toList());
         Collections.shuffle(filteredProductList);
         filteredProductList.forEach(product -> productDTOList.add(ProductDTO.of(product)));
 

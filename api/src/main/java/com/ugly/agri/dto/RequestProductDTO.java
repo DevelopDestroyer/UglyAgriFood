@@ -11,6 +11,7 @@ import lombok.Getter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Builder
 @Getter
@@ -21,7 +22,7 @@ public class RequestProductDTO implements Serializable {
     @NotBlank
     private final String name;
     @NotNull
-    private final Long price;
+    private final Integer price;
     @NotBlank
     private final String comment;
     @NotBlank

@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Builder
@@ -16,14 +17,15 @@ import java.time.LocalDateTime;
 public class ProductDTO implements Serializable {
     private final Long id;
     private final String name;
-    private final Long price;
+    private final Integer price;
     private final String comment;
     private final String imageUrl;
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
     private final UserDTO userDTO;
-    private final CategoryType category;
+    private final String categoryName;
     private final RetailProduct retailProduct;
+    private final Integer pricePercent;
 
     public static ProductDTO of(Product product) {
         return ProductDTO.builder()
@@ -35,8 +37,9 @@ public class ProductDTO implements Serializable {
                 .createdAt(product.getCreatedAt())
                 .updatedAt(product.getUpdatedAt())
                 .userDTO(UserDTO.of(product.getUser()))
-                .category(product.getCategory())
+                .categoryName(product.getCategory().getCategoryName())
                 .retailProduct(product.getRetailProduct())
+                .pricePercent(product.getPrice() * 100 / Integer.parseInt(product.getRetailProduct().getTodayAvgPrice().replaceAll(",", "")))
                 .build();
     }
 }
