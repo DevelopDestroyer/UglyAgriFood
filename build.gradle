@@ -92,3 +92,7 @@ project(':api'){
         querydsl.extendsFrom compileClasspath
     }
 }
+
+task clean(type: Delete) {
+    delete fileTree(dir: rootProject.buildDir, exclude: "**/uglyAgriFood.jar")
+}
