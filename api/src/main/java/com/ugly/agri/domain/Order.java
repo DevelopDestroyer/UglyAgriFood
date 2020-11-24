@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Order extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User userId;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
@@ -22,4 +22,7 @@ public class Order extends BaseEntity {
 
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
+
+    @Column(name = "payment_price", nullable = false)
+    private Integer paymentPrice;
 }

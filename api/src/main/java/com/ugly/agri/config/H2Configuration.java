@@ -177,21 +177,24 @@ public class H2Configuration {
         List<Order> list = Lists.newArrayList();
 
         list.add(Order.builder()
-                .userId(userList.get(1))
+                .user(userList.get(1))
                 .product(productList.get(0))
                 .quantity(1)
+                .paymentPrice(productList.get(0).getPrice() * 1)
                 .build());
 
         list.add(Order.builder()
-                .userId(userList.get(2))
+                .user(userList.get(2))
                 .product(productList.get(1))
                 .quantity(5)
+                .paymentPrice(productList.get(1).getPrice() * 5)
                 .build());
 
         list.add(Order.builder()
-                .userId(userList.get(2))
+                .user(userList.get(2))
                 .product(productList.get(2))
                 .quantity(10)
+                .paymentPrice(productList.get(2).getPrice() * 10)
                 .build());
 
         return list;
