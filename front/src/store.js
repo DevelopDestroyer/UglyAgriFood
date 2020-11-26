@@ -37,9 +37,9 @@ export default new Vuex.Store({
     },
     actions: {
         ///////////////////////////////////////////////////////////
-        //    * ORDER API
+        //    * MAIN API
         ///////////////////////////////////////////////////////////
-        GET_ORDER_DATA (context, payload) {
+        GET_MAIN_DATA (context, payload) {
             return Axios.get(this.state.API_HOST + '/api/main/data')
                 .then((result) => {
                     console.log(payload.data);
@@ -53,10 +53,14 @@ export default new Vuex.Store({
         },
 
         ///////////////////////////////////////////////////////////
-        //    * MAIN API
+        //    * ORDER API
         ///////////////////////////////////////////////////////////
-        GET_MAIN_DATA (context, payload) {
-            return Axios.get(this.state.API_HOST + '/api/orders?userId=' + this.state.userSeq)
+        GET_ORDER_DATA (context, payload) {
+            let param = '?userId=' + this.state.userSeq;
+            if(this.state.userSeq == ''){
+                param = '';
+            }
+            return Axios.get(this.state.API_HOST + '/api/orders' + param)
                 .then((result) => {
                     console.log(payload.data);
                     return result

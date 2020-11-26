@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app clipped-left clipped-right color="primary" dark>
+  <v-app-bar app clipped-left clipped-right color="primary" dark style="background-color: #00c853">
 
     <v-dialog
         v-model="dialog"

@@ -3,66 +3,66 @@
     <v-row>
       <v-col cols="12" lg="12">
         <v-card class="position-relative profile-card mb-7">
-          <v-card-text class="pa-5">
+          <v-card-text class="pa-2">
             <div class="text-center">
-              <v-row class="mt-6">
-                <v-col cols="12" style="text-align: center;">
-                  <h4 class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">못난이 푸드를 할인된 가격에 만나보세요!</h4><br/>
+              <v-row class="mt-2">
+                <v-col cols="12" style="text-align: left;">
+                  <h4 class="mt-2 title blue-grey--text text--darken-2 font-weight-regular" style="font-size: 24px; color:#444444">못난이 푸드를 할인된 가격에 만나보세요!</h4><br/>
                 </v-col>
                 <v-col cols="4">
                   <img
                       src="img/1.png"
                       alt="user"
                       class="rounded-circle"
-                      width="100"
+                      width="85px;"
                       @click="alert('hi');"
                   />
-                  <h4 @click="alert('hi');" class="font-weight-regular">전체보기</h4>
+                  <h4 @click="alert('hi');" class="font-weight-regular"  style="font-size: 18px; color: #444444">전체보기</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
                       src="img/2.png"
                       alt="user"
                       class="rounded-circle"
-                      width="100"
+                      width="85px"
                   />
-                  <h4 class="font-weight-regular">농산</h4>
+                  <h4 class="font-weight-regular" style="font-size: 18px; color: #444444">농산</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
                       src="img/3.png"
                       alt="user"
                       class="rounded-circle"
-                      width="100"
+                      width="85px"
                   />
-                  <h4 class="font-weight-regular">수산</h4>
+                  <h4 class="font-weight-regular" style="font-size: 18px; color: #444444">수산</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
                       src="img/4.png"
                       alt="user"
                       class="rounded-circle"
-                      width="100"
+                      width="85px;"
                   />
-                  <h4 class="font-weight-regular">축산</h4>
+                  <h4 class="font-weight-regular" style="font-size: 18px; color: #444444">축산</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
                       src="img/5.png"
                       alt="user"
                       class="rounded-circle"
-                      width="100"
+                      width="85px;"
                   />
-                  <h4 class="font-weight-regular">가공</h4>
+                  <h4 class="font-weight-regular" style="font-size: 18px; color: #444444">가공</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
                       src="img/6.png"
                       alt="user"
                       class="rounded-circle"
-                      width="100"
+                      width="85px;"
                   />
-                  <h4 class="font-weight-regular">기타</h4>
+                  <h4 class="font-weight-regular" style="font-size: 18px; color: #444444">기타</h4>
                 </v-col>
               </v-row>
             </div>
@@ -84,11 +84,11 @@
               <table style="width:100%;">
                 <tr>
                   <td style="width:70%;">
-                    <span style="color:black; font-size: 18px;" class="mx-4 blue-grey--text" v-if="this.$store.state.userName == ''"><b>비회원님을 위한 추천상품</b></span>
-                    <span style="color:black; font-size: 18px;" class="mx-4 blue-grey--text" v-else><b>{{this.$store.state.userName }}님을 위한 추천상품</b></span>
+                    <span style="color:#444444; font-size: 18px;" class="mx-2" v-if="this.$store.state.userName == ''"><b>비회원님을 위한 추천상품</b></span>
+                    <span style="color:#444444; font-size: 18px;" class="mx-2" v-else><b>{{this.$store.state.userName }}님을 위한 추천상품</b></span>
                   </td>
                   <td style="text-align: right;">
-                    <span class="mx-4 success--text"><b style="color:#f76707; font-size: 14px;">더보기＞</b></span>
+                    <span class="mx-4 success--text"><b style="color:#f76707; font-size: 16px;">더보기＞</b></span>
                   </td>
                 </tr>
               </table>
@@ -96,24 +96,24 @@
 
             <v-divider class="mb-4"></v-divider>
 
-            <div style="width: auto; height: 220px; overflow-x: scroll; white-space: nowrap;">
+            <div style="width: auto; height: 230px; overflow-x: scroll; white-space: nowrap;">
               <table>
                 <tr>
                   <td valign="top" v-for="item in recommendProductList" v-bind:key="item.id">
-                    <div class="text-left"  style="width:110px; white-space: normal">
+                    <div class="text-left"  style="width:140px; white-space: normal;">
                       <img
                           src="img/1.png"
                           alt="product"
-                          width="100px"
+                          width="120px"
                           style="border-radius: 7px;
                             -moz-border-radius: 7px;
                             -khtml-border-radius: 7px;
                             -webkit-border-radius: 7px;"
                       />
-                      <h6 class="font-weight-regular" style="line-height:12px;">{{item.name}}</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
-                      <h6 class="op-5 font-weight-regular">시세 평균 <span style="text-decoration:line-through"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
-                      <h4><b style="color:red;">{{ item.pricePercent }}%</b> {{item.price}}원</h4>
+                      <h6 class="font-weight-regular" style="font-size:14px;">{{item.name}}</h6>
+                      <h6 class="op-5 font-weight-regular" style="font-size:10px;"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
+                      <h6 class="op-5 font-weight-regular" style="font-size:10px;">시세 평균 <span style="text-decoration:line-through; font-size: 10px;"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
+                      <h4 style="font-size: 16px;"><b style="color:#f76707; font-size: 18px;">{{ item.pricePercent }}%</b> {{item.price}}원</h4>
                     </div>
                   </td>
 
@@ -138,10 +138,10 @@
                 <tr>
                   <td style="width:70%;">
                     <!--h5 class="title blue-grey--text text--darken-2 font-weight-regular mb-4">평균시세보다 50% 이상 저렴해요!</h5-->
-                    <span style="color:black; font-size: 18px;" class="mx-4 blue-grey--text"><b>평균시세보다 50% 이상 저렴해요!</b></span>
+                    <span style="color:#444444; font-size: 18px;" class="mx-2"><b>시세보다 50%이상 저렴해요!</b></span>
                   </td>
                   <td style="text-align: right;">
-                    <span class="mx-4 success--text"><b style="color:#f76707; font-size: 14px;">더보기＞</b></span>
+                    <span class="mx-4 success--text"><b style="color:#f76707; font-size: 16px;">더보기＞</b></span>
                   </td>
                 </tr>
               </table>
@@ -149,24 +149,24 @@
 
             <v-divider class="mb-4"></v-divider>
 
-            <div style="width: auto; height: 220px; overflow-x: scroll; white-space: nowrap;">
+            <div style="width: auto; height: 230px; overflow-x: scroll; white-space: nowrap;">
               <table>
                 <tr>
                   <td valign="top" v-for="item in cheapProductList" v-bind:key="item.id">
-                    <div class="text-left"  style="width:110px; white-space: normal">
+                    <div class="text-left"  style="width:140px; white-space: normal">
                       <img
                           src="img/1.png"
                           alt="product"
-                          width="100px"
+                          width="120px"
                           style="border-radius: 7px;
                             -moz-border-radius: 7px;
                             -khtml-border-radius: 7px;
                             -webkit-border-radius: 7px;"
                       />
-                      <h6 class="font-weight-regular" style="line-height:12px;">{{item.name}}</h6>
-                      <h6 class="op-5 font-weight-regular"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
-                      <h6 class="op-5 font-weight-regular">시세 평균 <span style="text-decoration:line-through"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
-                      <h4><b style="color:red;">{{ item.pricePercent }}%</b> {{item.price}}원</h4>
+                      <h6 class="font-weight-regular" style="font-size:14px;">{{item.name}}</h6>
+                      <h6 class="op-5 font-weight-regular" style="font-size:10px;"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
+                      <h6 class="op-5 font-weight-regular" style="font-size:10px;">시세 평균 <span style="text-decoration:line-through"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
+                      <h4 style="font-size: 16px;"><b style="color:#f76707; font-size: 18px;">{{ item.pricePercent }}%</b> {{item.price}}원</h4>
                     </div>
                   </td>
 
