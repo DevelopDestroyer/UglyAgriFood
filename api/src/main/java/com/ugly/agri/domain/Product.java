@@ -4,7 +4,8 @@ import com.ugly.agri.type.CategoryType;
 import lombok.*;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -18,23 +19,32 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "price", nullable = false)
-    private Integer price;
-
-    @Column(name = "comment", nullable = false)
-    private String comment;
-
-    @Column(name = "image_url", nullable = false)
-    private String imageUrl;
+    @Column(name = "title", nullable = false)
+    private String title;
 
     @Column(name = "category", nullable = false)
     @Enumerated(EnumType.STRING)
     private CategoryType category;
 
+    @Column(name = "production_area", nullable = false)
+    private String productionArea;
+
+    @Column(name = "production_date", nullable = false)
+    private LocalDate productionDate;
+
+    @Column(name = "price", nullable = false)
+    private Long price;
+
+    @Column(name = "introduction", nullable = false)
+    private String introduction;
+
     @ManyToOne
     @JoinColumn(name = "retail_product_id", nullable = false)
     private RetailProduct retailProduct;
+
+//    @Column(name = "image_url", nullable = false)
+//    private String imageUrl;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    private List<Review> review;
 }

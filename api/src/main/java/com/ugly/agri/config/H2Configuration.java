@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Profile;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Configuration
@@ -24,7 +25,7 @@ import java.util.List;
 public class H2Configuration {
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
-    private final CommentRepository commentRepository;
+    private final ReviewRepository reviewRepository;
     private final ProductRepository productRepository;
     private final RetailProductRepository retailProductRepository;
 
@@ -40,7 +41,7 @@ public class H2Configuration {
         List<Product> productList = productRepository.saveAll(
                 getProductList(userList, retailProductRepository.saveAll(getRetailProductList())));
         orderRepository.saveAll(getOrderList(userList, productList));
-        commentRepository.saveAll(getCommentList(userList, productList));
+        reviewRepository.saveAll(getCommentList(userList, productList));
     }
 
     public void crawling() throws IOException {
@@ -141,32 +142,38 @@ public class H2Configuration {
 
         list.add(Product.builder()
                 .user(userList.get(1))
-                .name("못난이 사과")
-                .price(10000)
-                .comment("흠집이 좀 있는데 단맛이 많아서 일반사과랑 맛이 똑같습니다.")
-                .imageUrl("img/0.jpg")
+                .title("못난이 사과")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .productionArea("광주")
+                .productionDate(LocalDate.now().minusDays(100))
+                .price(10000L)
+                .introduction("흠집이 좀 있는데 단맛이 많아서 일반사과랑 맛이 똑같습니다.")
                 .retailProduct(retailProductList.get(0))
+//                .imageUrl("img/0.jpg")
                 .build());
 
         list.add(Product.builder()
                 .user(userList.get(1))
-                .name("못난이 감자")
-                .price(20000)
-                .comment("크기가 좀 작지만 맛있습니다!")
-                .imageUrl("img/1.jpg")
+                .title("못난이 감자")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .productionArea("대구")
+                .productionDate(LocalDate.now().minusDays(10))
+                .price(20000L)
+                .introduction("크기가 좀 작지만 맛있습니다!")
                 .retailProduct(retailProductList.get(1))
+//                .imageUrl("img/1.jpg")
                 .build());
 
         list.add(Product.builder()
                 .user(userList.get(1))
-                .name("못난이 고구마")
-                .price(30000)
-                .comment("에어프라이어에 해서 먹으면 맛있습니다~")
-                .imageUrl("img/2.jpg")
+                .title("못난이 고구마")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .productionArea("부산")
+                .productionDate(LocalDate.now().minusDays(50))
+                .price(30000L)
+                .introduction("에어프라이어에 해서 먹으면 맛있습니다~")
                 .retailProduct(retailProductList.get(2))
+//                .imageUrl("img/2.jpg")
                 .build());
 
         return list;
@@ -179,45 +186,45 @@ public class H2Configuration {
                 .user(userList.get(1))
                 .product(productList.get(0))
                 .quantity(1)
-                .paymentPrice(productList.get(0).getPrice() * 1)
+                .paymentPrice((int) (productList.get(0).getPrice() * 1))
                 .build());
 
         list.add(Order.builder()
                 .user(userList.get(2))
                 .product(productList.get(1))
                 .quantity(5)
-                .paymentPrice(productList.get(1).getPrice() * 5)
+                .paymentPrice((int) (productList.get(1).getPrice() * 5))
                 .build());
 
         list.add(Order.builder()
                 .user(userList.get(2))
                 .product(productList.get(2))
                 .quantity(10)
-                .paymentPrice(productList.get(2).getPrice() * 10)
+                .paymentPrice((int) (productList.get(2).getPrice() * 10))
                 .build());
 
         return list;
     }
 
-    private List<Comment> getCommentList(List<User> userList, List<Product> productList) {
-        List<Comment> list = Lists.newArrayList();
+    private List<Review> getCommentList(List<User> userList, List<Product> productList) {
+        List<Review> list = Lists.newArrayList();
 
-        list.add(Comment.builder()
+        list.add(Review.builder()
                 .user(userList.get(0))
                 .product(productList.get(0))
-                .comment("난 관리자다")
+                .content("난 관리자다")
                 .build());
 
-        list.add(Comment.builder()
+        list.add(Review.builder()
                 .user(userList.get(1))
                 .product(productList.get(1))
-                .comment("난 판매자다")
+                .content("난 판매자다")
                 .build());
 
-        list.add(Comment.builder()
+        list.add(Review.builder()
                 .user(userList.get(2))
                 .product(productList.get(1))
-                .comment("난 구매자다")
+                .content("난 구매자다")
                 .build());
 
         return list;

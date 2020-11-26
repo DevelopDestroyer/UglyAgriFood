@@ -23,7 +23,7 @@ public class RequestOrderDTO {
                 .user(user)
                 .product(product)
                 .quantity(quantity)
-                .paymentPrice(product.getPrice() * quantity)
+                .paymentPrice((int) (product.getPrice() * quantity))
                 .build();
     }
 }
