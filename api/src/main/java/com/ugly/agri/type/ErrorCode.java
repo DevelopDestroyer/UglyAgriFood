@@ -19,6 +19,9 @@ public enum ErrorCode {
 
     // PRODUCT
     NOT_EXIST_PRODUCT("P001", "해당 상품은 존재하지 않습니다."),
+
+    // RETAIL_PRODUCT
+    NOT_EXIST_RETAIL_PRODUCT("R001", "해당 소매상품은 존재하지 않습니다."),
     ;
 
     private final String code;

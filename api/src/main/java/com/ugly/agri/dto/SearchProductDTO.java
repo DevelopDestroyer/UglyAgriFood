@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class SearchProductDTO {
     @NotBlank
-    private String name;
+    private String title;
     @NotBlank
     private String categoryName;
 }

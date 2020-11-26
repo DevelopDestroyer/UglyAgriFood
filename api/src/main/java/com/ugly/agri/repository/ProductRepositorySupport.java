@@ -23,8 +23,8 @@ public class ProductRepositorySupport extends QuerydslRepositorySupport {
 
     public List<Product> findByCondition(SearchProductDTO searchProductDTO) {
         BooleanBuilder builder = new BooleanBuilder();
-        if (searchProductDTO.getName() != null) {
-            builder.and(product.name.contains(searchProductDTO.getName()));
+        if (searchProductDTO.getTitle() != null) {
+            builder.and(product.title.contains(searchProductDTO.getTitle()));
         }
 
         if (searchProductDTO.getCategoryName() != null) {
