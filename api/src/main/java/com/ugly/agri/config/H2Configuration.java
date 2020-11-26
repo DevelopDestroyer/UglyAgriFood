@@ -25,7 +25,7 @@ import java.util.List;
 public class H2Configuration {
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
-    private final CommentRepository commentRepository;
+    private final ReviewRepository reviewRepository;
     private final ProductRepository productRepository;
     private final RetailProductRepository retailProductRepository;
 
@@ -41,7 +41,7 @@ public class H2Configuration {
         List<Product> productList = productRepository.saveAll(
                 getProductList(userList, retailProductRepository.saveAll(getRetailProductList())));
         orderRepository.saveAll(getOrderList(userList, productList));
-        commentRepository.saveAll(getCommentList(userList, productList));
+        reviewRepository.saveAll(getCommentList(userList, productList));
     }
 
     public void crawling() throws IOException {
@@ -206,25 +206,25 @@ public class H2Configuration {
         return list;
     }
 
-    private List<Comment> getCommentList(List<User> userList, List<Product> productList) {
-        List<Comment> list = Lists.newArrayList();
+    private List<Review> getCommentList(List<User> userList, List<Product> productList) {
+        List<Review> list = Lists.newArrayList();
 
-        list.add(Comment.builder()
+        list.add(Review.builder()
                 .user(userList.get(0))
                 .product(productList.get(0))
-                .comment("난 관리자다")
+                .content("난 관리자다")
                 .build());
 
-        list.add(Comment.builder()
+        list.add(Review.builder()
                 .user(userList.get(1))
                 .product(productList.get(1))
-                .comment("난 판매자다")
+                .content("난 판매자다")
                 .build());
 
-        list.add(Comment.builder()
+        list.add(Review.builder()
                 .user(userList.get(2))
                 .product(productList.get(1))
-                .comment("난 구매자다")
+                .content("난 구매자다")
                 .build());
 
         return list;

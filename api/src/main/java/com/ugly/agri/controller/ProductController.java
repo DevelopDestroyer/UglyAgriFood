@@ -24,7 +24,7 @@ public class ProductController {
 
     @ApiOperation(value = "상품 리스트 조회")
     @GetMapping
-    public Response<List<ProductDTO>> getProducts(SearchProductDTO searchProductDTO) {
+    public Response<List<ProductDTO>> getProducts(@RequestBody SearchProductDTO searchProductDTO) {
         return Response.ok(productService.getProductsByCondition(searchProductDTO));
     }
 

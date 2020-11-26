@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -43,4 +44,7 @@ public class Product extends BaseEntity {
 
 //    @Column(name = "image_url", nullable = false)
 //    private String imageUrl;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    private List<Review> review;
 }

@@ -29,6 +29,8 @@ public class ProductDTO implements Serializable {
     private final Integer pricePercent;
 //    private final String imageUrl;
 
+    private final Integer reviewCount;
+
     public static ProductDTO of(Product product) {
         return ProductDTO.builder()
                 .userDTO(UserDTO.of(product.getUser()))
@@ -45,6 +47,7 @@ public class ProductDTO implements Serializable {
                 .pricePercent(
                         (int) (product.getPrice() * 100 /
                                 Integer.parseInt(product.getRetailProduct().getTodayAvgPrice().replaceAll(",", ""))))
+                .reviewCount(product.getReview().size())
                 .build();
     }
 }

@@ -12,7 +12,7 @@ public class ReviewDTO {
 
     public static ReviewDTO of(Review review) {
         return ReviewDTO.builder()
-                .productName(review.getProduct().getName())
+                .productName(review.getProduct().getTitle())
                 .content(review.getContent())
                 .build();
     }
