@@ -61,9 +61,9 @@ public class H2Configuration {
                             .todayAvgPrice(tds.get(3).text())
                             .oneDayAvgPrice(tds.get(4).text())
                             .oneWeekAvgPrice(tds.get(5).text())
-                            .twoWeekAvgPrice(tds.get(6).text())
-                            .oneMonthAvgPrice(tds.get(7).text())
-                            .oneYearAvgPrice(tds.get(8).text())
+                            .twoWeekAvgPrice(tds.size() >= 9 ? tds.get(6).text() : "0")
+                            .oneMonthAvgPrice(tds.size() >= 9 ? tds.get(7).text() : "0")
+                            .oneYearAvgPrice(tds.size() >= 9 ? tds.get(8).text() : "0")
                             .build();
                     retailProductRepository.save(retailProduct);
                 }
