@@ -39,7 +39,7 @@ public class Product extends BaseEntity {
     private String introduction;
 
     @ManyToOne
-    @JoinColumn(name = "retail_product_id", nullable = false)
+    @JoinColumn(name = "retail_product_id")
     private RetailProduct retailProduct;
 
 //    @Column(name = "image_url", nullable = false)

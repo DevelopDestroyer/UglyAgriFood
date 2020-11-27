@@ -33,8 +33,6 @@ public class RequestProductDTO implements Serializable {
     private final Long price;
     @NotBlank
     private final String introduction;
-    @NotNull
-    private final Long retailProductId;
 //    @NotBlank
 //    private final String imageUrl;
 

@@ -42,7 +42,7 @@ public class ProductService {
                 productRepository.save(
                         requestProductDTO.toEntity(
                                 userService.searchUser(requestProductDTO.getUserId()),
-                                retailProductService.searchRetailProduct(requestProductDTO.getRetailProductId())
+                                retailProductService.matchRetailProduct(requestProductDTO.getTitle())
                         )));
     }
 
@@ -55,7 +55,7 @@ public class ProductService {
         product.setProductionDate(requestProductDTO.getProductionDate());
         product.setPrice(requestProductDTO.getPrice());
         product.setIntroduction(requestProductDTO.getIntroduction());
-        product.setRetailProduct(retailProductService.searchRetailProduct(requestProductDTO.getRetailProductId()));
+        product.setRetailProduct(retailProductService.matchRetailProduct(requestProductDTO.getTitle()));
 //        product.setImageUrl(requestProductDTO.getImageUrl());
 
         return ProductDTO.of(productRepository.save(product));

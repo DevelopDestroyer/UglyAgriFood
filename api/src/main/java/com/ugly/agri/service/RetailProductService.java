@@ -28,4 +28,11 @@ public class RetailProductService {
         return retailProductRepository.findByIdAndIsDeletedFalse(id)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_EXIST_RETAIL_PRODUCT));
     }
+
+    public RetailProduct matchRetailProduct(String title) {
+        List<RetailProduct> retailProducts = retailProductRepository.findAll();
+        return retailProducts.stream()
+                .filter(retailProduct -> title.contains(retailProduct.getName()))
+                .findFirst().orElse(null);
+    }
 }
