@@ -71,7 +71,7 @@ export default {
   methods: {
     getBuyData(){
       let vm = this;
-      this.$store.dispatch('GET_MAIN_DATA', {
+      this.$store.dispatch('GET_ORDER_DATA', {
         'data':'getBuyData Req'
       }).then((result) => {
         //console.log("결과" + result);//바깥 리설트
@@ -80,7 +80,7 @@ export default {
         //console.log("결과" + result.data);//바깥 리설트
         if(result.data.statusCode == 'OK'){
           console.log("정상응답");
-          vm.myOrderList = result.data.data;
+          vm.myOrderList = result.data.data.recommendProductList;
 
           console.log("구매이력 api 응답 완료");
         }

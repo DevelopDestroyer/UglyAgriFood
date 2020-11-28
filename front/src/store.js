@@ -37,6 +37,52 @@ export default new Vuex.Store({
     },
     actions: {
         ///////////////////////////////////////////////////////////
+        //    * PRODUCT API
+        ///////////////////////////////////////////////////////////
+        GET_PRODUCT_DATA (context, payload) {
+            let type = payload.type; //all, title, category
+            let param = '';
+            if(type == 'all'){
+                param = '';
+            }
+            else if(type == 'title'){
+                param = '?title=' + payload.keyword;
+            }
+            else{
+                param = '?categoryName=' + payload.keyword;
+            }
+            return Axios.get(this.state.API_HOST + '/api/products' + param)
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                    //BUS.$emit('alertModalOpen', error);
+                })
+        },
+        POST_PRODUCT_DATA (context, payload) {
+            return Axios.post(this.state.API_HOST + '/api/products', {
+                'category' : payload.category,
+                'introduction': payload.introduction,
+                'price' : payload.price,
+                'productionArea' : payload.productionArea,
+                'productionDate' : payload.productionDate,
+                'title' : payload.title,
+                'userId' : payload.userId
+            })
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                })
+        },
+
+        ///////////////////////////////////////////////////////////
         //    * MAIN API
         ///////////////////////////////////////////////////////////
         GET_MAIN_DATA (context, payload) {

@@ -55,7 +55,7 @@ export default new Router({
                 },
                 {
                     name: 'Product List',
-                    path: 'pages/productList',
+                    path: 'pages/productList/:category',
                     component: () => import('@/views/pages/ProductList'),
                 },
                 {

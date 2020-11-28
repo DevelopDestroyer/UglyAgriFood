@@ -55,7 +55,7 @@ export default {
   name: "Profile",
 
   data: () => ({
-    dtext: "George deo",
+    dtext: "",
     emailtext: "",
     password: "",
     disableinput: "",

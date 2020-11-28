@@ -105,6 +105,10 @@
           <v-list-item-title @click="dialog=true" v-if="!this.$store.state.isLogin">로그인</v-list-item-title>
           <v-list-item-title @click="logout()" v-else>로그아웃</v-list-item-title>
         </v-list-item>
+        <v-list-item @click="href" v-if="this.$store.state.isLogin">
+          <v-list-item-title @click="goMypage()">마이페이지</v-list-item-title>
+        </v-list-item>
+
       </v-list>
     </v-menu>
   </v-app-bar>
@@ -158,7 +162,9 @@ export default {
     ...mapMutations({
       setSidebarDrawer: "SET_SIDEBAR_DRAWER"
     }),
-
+    goMypage(){
+      location.href="/#/pages/myInfo";
+    },
     login(){
       this.$store.dispatch('POST_LOGIN', {
         email : this.loginModalEmail,

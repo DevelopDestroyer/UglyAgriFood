@@ -4,15 +4,48 @@
       <v-col cols="12" lg="12">
         <v-card>
           <v-card-text class="text-left pa-3">
-            <h4 class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">상품 전체보기</h4>
+            <h4 v-if="this.$route.params.category == 'all'" class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">상품 전체보기</h4>
+            <h4 v-else-if="(this.$route.params.category).indexOf('_') != -1" class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">
+              {{ this.$route.params.category.substr(1) }}에 대한 검색결과 입니다.</h4>
+            <h4 v-else class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">{{ this.$route.params.category }} 전체보기</h4>
             <!--h6 class="subtitle-2 font-weight-light">평점순□</h6-->
             <v-select v-model="orderDefaultSelected" :items="orderSelected" filled label="정렬" background-color="transparent"></v-select>
           </v-card-text>
         </v-card>
       </v-col>
 
+      <v-col cols="12" lg="12" v-for="item in productList" v-bind:key="item.id">
+        <v-card>
+          <v-row class="mt-6 pa-3">
+            <v-col cols="8">
+              <h4 class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">{{ item.title }}</h4>
+              <small class="blue-grey--text text--darken-2">{{ item.productionArea }} | {{ item.productionDate }} 이후</small><br/>
+              <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">{{ ranStar(item.reviewCount) }}</b>
+              <small class="blue-grey--text text--darken-2">({{ item.reviewCount }})</small><br/>
+              <b style="font-size: 24px;">{{ item.price }}원</b> <i style="text-decoration:line-through;">{{ item.retailProduct.todayAvgPrice }}</i>
+            </v-col>
+            <v-col cols="4" style="text-align: right;">
+              <img src="img/3.png"  style="max-width: 128px;border-radius: 7px;
+                            -moz-border-radius: 7px;
+                            -khtml-border-radius: 7px;
+                            -webkit-border-radius: 7px;">
+            </v-col>
+            <v-col cols="12">
+              <v-alert
+                  text
+                  dense
+                  color="warning"
+                  icon="mdi-clock-fast"
+                  border="left"
+              >
+                <b>빅데이터</b> 고구마의 현재 시세는 1kg 당 {{ item.retailProduct.todayAvgPrice }}원 입니다. 이 상품은 시세보다 <b style="color:#f76707; font-size: 24px">{{ item.pricePercent }}%</b> 저렴해요!
+              </v-alert>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-col>
 
-      <v-col cols="12" lg="12">
+      <!--v-col cols="12" lg="12">
         <v-card>
         <v-row class="mt-6 pa-3">
           <v-col cols="8">
@@ -72,17 +105,22 @@
             </v-col>
           </v-row>
         </v-card>
-      </v-col>
+      </v-col-->
 
     </v-row>
   </v-container>
 </template>
 
 <script>
+import {BUS} from "@/views/pages/EventBus";
+
 export default {
   name: "Profile",
 
+  //this.$route.params.category;
   data: () => ({
+    productList : [],
+
     orderDefaultSelected: "평점순",
     orderSelected: ["평점순", "가격낮은순", "가격높은순"],
     dtext: "George deo",
@@ -100,6 +138,55 @@ export default {
     },
     items: ["London", "India", "America"]
   }),
-  components: {}
+
+  components: {},
+  created () {
+    this.getProductData();
+  },
+  methods: {
+    getProductData(){
+      let vm = this;
+      let type = '';
+      let keyword = '';
+      if((this.$route.params.category).indexOf('_') != -1){
+        //검색기능
+        type = 'title';
+        keyword = this.$route.params.category.substr(1);
+      }
+      else if((this.$route.params.category).indexOf('all') != -1 || this.$route.params.category == null || this.$route.params.category == ''){
+        type = 'all';
+      }
+      else{
+        type = 'category';
+        keyword = this.$route.params.category;
+      }
+
+      this.$store.dispatch('GET_PRODUCT_DATA', {
+        type : type,
+        keyword : keyword
+      }).then((result) => {
+        if(result.data.statusCode == 'OK'){
+          console.log("정상응답");
+          vm.productList = result.data.data;
+          console.log("product api 응답 완료");
+        }
+        else{
+          BUS.$emit('alertModalOpen', result.data.message);
+        }
+      })
+    },
+    ranStar(reviewCnt){
+      let res = Math.floor( Math.random() * 3 + 5 );
+      if(reviewCnt == 0)
+        return '★';
+      else if(res == 5)
+        return '★★★★★';
+      else if(res == 4)
+        return '★★★★';
+      else
+        return '★★★';
+
+    }
+  }
 };
 </script>

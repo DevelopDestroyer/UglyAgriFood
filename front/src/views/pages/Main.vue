@@ -15,9 +15,9 @@
                       alt="user"
                       class="rounded-circle"
                       width="85px;"
-                      @click="alert('hi');"
+                      @click="goProductList('all')"
                   />
-                  <h4 @click="alert('hi');" class="font-weight-regular"  style="font-size: 18px; color: #444444">전체보기</h4>
+                  <h4 @click="goProductList('all')" class="font-weight-regular"  style="font-size: 18px; color: #444444">전체보기</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
@@ -25,8 +25,9 @@
                       alt="user"
                       class="rounded-circle"
                       width="85px"
+                      @click="goProductList('농산물')"
                   />
-                  <h4 class="font-weight-regular" style="font-size: 18px; color: #444444">농산</h4>
+                  <h4 @click="goProductList('농산물')" class="font-weight-regular" style="font-size: 18px; color: #444444">농산</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
@@ -34,8 +35,9 @@
                       alt="user"
                       class="rounded-circle"
                       width="85px"
+                      @click="goProductList('수산물')"
                   />
-                  <h4 class="font-weight-regular" style="font-size: 18px; color: #444444">수산</h4>
+                  <h4 @click="goProductList('수산물')" class="font-weight-regular" style="font-size: 18px; color: #444444">수산</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
@@ -43,8 +45,9 @@
                       alt="user"
                       class="rounded-circle"
                       width="85px;"
+                      @click="goProductList('축산물')"
                   />
-                  <h4 class="font-weight-regular" style="font-size: 18px; color: #444444">축산</h4>
+                  <h4 @click="goProductList('축산물')" class="font-weight-regular" style="font-size: 18px; color: #444444">축산</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
@@ -52,8 +55,9 @@
                       alt="user"
                       class="rounded-circle"
                       width="85px;"
+                      @click="goProductList('가공물')"
                   />
-                  <h4 class="font-weight-regular" style="font-size: 18px; color: #444444">가공</h4>
+                  <h4 @click="goProductList('가공물')" class="font-weight-regular" style="font-size: 18px; color: #444444">가공</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
@@ -61,8 +65,9 @@
                       alt="user"
                       class="rounded-circle"
                       width="85px;"
+                      @click="goProductList('기타')"
                   />
-                  <h4 class="font-weight-regular" style="font-size: 18px; color: #444444">기타</h4>
+                  <h4 @click="goProductList('기타')" class="font-weight-regular" style="font-size: 18px; color: #444444">기타</h4>
                 </v-col>
               </v-row>
             </div>
@@ -111,7 +116,10 @@
                             -webkit-border-radius: 7px;"
                       />
                       <h6 class="font-weight-regular" style="font-size:14px;">{{item.name}}</h6>
-                      <h6 class="op-5 font-weight-regular" style="font-size:10px;"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
+                      <h6 class="op-5 font-weight-regular" style="font-size:10px;">
+                        <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">{{ ranStar(item.reviewCount) }}</b>
+                        ({{item.reviewCount}})
+                      </h6>
                       <h6 class="op-5 font-weight-regular" style="font-size:10px;">시세 평균 <span style="text-decoration:line-through; font-size: 10px;"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
                       <h4 style="font-size: 16px;"><b style="color:#f76707; font-size: 18px;">{{ item.pricePercent }}%</b> {{item.price}}원</h4>
                     </div>
@@ -164,7 +172,10 @@
                             -webkit-border-radius: 7px;"
                       />
                       <h6 class="font-weight-regular" style="font-size:14px;">{{item.name}}</h6>
-                      <h6 class="op-5 font-weight-regular" style="font-size:10px;"><b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b>(781)</h6>
+                      <h6 class="op-5 font-weight-regular" style="font-size:10px;">
+                        <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">{{ ranStar(item.reviewCount) }}</b>
+                        ({{ item.reviewCount }})
+                      </h6>
                       <h6 class="op-5 font-weight-regular" style="font-size:10px;">시세 평균 <span style="text-decoration:line-through"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
                       <h4 style="font-size: 16px;"><b style="color:#f76707; font-size: 18px;">{{ item.pricePercent }}%</b> {{item.price}}원</h4>
                     </div>
@@ -213,6 +224,9 @@
           this.getMainData();
         },
         methods: {
+          goProductList(param){
+            location.href= "/#/pages/ProductList/"+param;
+          },
           getMainData(){
             let vm = this;
             this.$store.dispatch('GET_MAIN_DATA', {
@@ -234,6 +248,18 @@
                 BUS.$emit('alertModalOpen', result.data.message);
               }
             })
+          },
+          ranStar(reviewCnt){
+            let res = Math.floor( Math.random() * 3 + 5 );
+            if(reviewCnt == 0)
+              return '★';
+            else if(res == 5)
+              return '★★★★★';
+            else if(res == 4)
+              return '★★★★';
+            else
+              return '★★★';
+
           }
         }
       };
