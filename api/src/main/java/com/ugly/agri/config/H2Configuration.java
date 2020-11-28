@@ -149,6 +149,11 @@ public class H2Configuration {
                 .price(10000L)
                 .introduction("흠집이 좀 있는데 단맛이 많아서 일반사과랑 맛이 똑같습니다.")
                 .retailProduct(retailProductList.get(0))
+                .origin("국내산")
+                .producer("해남화산농협")
+                .storageMethod("냉장고")
+                .weightPerUnit("3kg")
+                .composition("사과 3kg")
 //                .imageUrl("img/0.jpg")
                 .build());
 
@@ -161,6 +166,11 @@ public class H2Configuration {
                 .price(20000L)
                 .introduction("크기가 좀 작지만 맛있습니다!")
                 .retailProduct(retailProductList.get(1))
+                .origin("미국")
+                .producer("감자회사")
+                .storageMethod("상온")
+                .weightPerUnit("5kg")
+                .composition("감자 5kg")
 //                .imageUrl("img/1.jpg")
                 .build());
 
@@ -173,6 +183,11 @@ public class H2Configuration {
                 .price(30000L)
                 .introduction("에어프라이어에 해서 먹으면 맛있습니다~")
                 .retailProduct(retailProductList.get(2))
+                .origin("국내산")
+                .producer("충남농협")
+                .storageMethod("냉장고")
+                .weightPerUnit("2kg")
+                .composition("고구마 2kg")
 //                .imageUrl("img/2.jpg")
                 .build());
 

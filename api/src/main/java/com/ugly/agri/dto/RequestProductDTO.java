@@ -33,6 +33,17 @@ public class RequestProductDTO implements Serializable {
     private final Long price;
     @NotBlank
     private final String introduction;
+    @NotBlank
+    private final String origin;
+    @NotBlank
+    private final String producer;
+    @NotBlank
+    private final String storageMethod;
+    @NotBlank
+    private final String weightPerUnit;
+    @NotBlank
+    private final String composition;
+
 //    @NotBlank
 //    private final String imageUrl;
 
@@ -59,6 +70,11 @@ public class RequestProductDTO implements Serializable {
                 .price(price)
                 .introduction(introduction)
                 .retailProduct(retailProduct)
+                .origin(origin)
+                .producer(producer)
+                .storageMethod(storageMethod)
+                .weightPerUnit(weightPerUnit)
+                .composition(composition)
                 .build();
     }
 }
