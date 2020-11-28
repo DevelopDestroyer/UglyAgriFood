@@ -45,9 +45,11 @@ public class ProductDTO implements Serializable {
                 .createdAt(product.getCreatedAt())
                 .updatedAt(product.getUpdatedAt())
                 .pricePercent(
-                        (int) (product.getPrice() * 100 /
-                                Integer.parseInt(product.getRetailProduct().getTodayAvgPrice().replaceAll(",", ""))))
-                .reviewCount(product.getReviews().size())
+                        product.getRetailProduct() == null ?
+                                null :
+                                (int) (product.getPrice() * 100 /
+                                        Integer.parseInt(product.getRetailProduct().getTodayAvgPrice().replaceAll(",", ""))))
+                .reviewCount(product.getReviews() == null ? 0 : product.getReviews().size())
                 .build();
     }
 }

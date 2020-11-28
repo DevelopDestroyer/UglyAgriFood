@@ -56,6 +56,11 @@ public class ProductService {
         product.setPrice(requestProductDTO.getPrice());
         product.setIntroduction(requestProductDTO.getIntroduction());
         product.setRetailProduct(retailProductService.matchRetailProduct(requestProductDTO.getTitle()));
+        product.setOrigin(requestProductDTO.getOrigin());
+        product.setProducer(requestProductDTO.getProducer());
+        product.setStorageMethod(requestProductDTO.getStorageMethod());
+        product.setWeightPerUnit(requestProductDTO.getWeightPerUnit());
+        product.setComposition(requestProductDTO.getComposition());
 //        product.setImageUrl(requestProductDTO.getImageUrl());
 
         return ProductDTO.of(productRepository.save(product));
