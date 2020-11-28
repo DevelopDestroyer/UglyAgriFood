@@ -1,5 +1,6 @@
 package com.ugly.agri.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ugly.agri.type.CategoryType;
 import lombok.*;
 
@@ -45,6 +46,7 @@ public class Product extends BaseEntity {
 //    @Column(name = "image_url", nullable = false)
 //    private String imageUrl;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private List<Review> review;
+    private List<Review> reviews;
 }
