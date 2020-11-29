@@ -23,6 +23,11 @@ public class ProductDTO implements Serializable {
     private final Long price;
     private final String introduction;
     private final RetailProduct retailProduct;
+    private final String origin;
+    private final String producer;
+    private final String storageMethod;
+    private final String weightPerUnit;
+    private final String composition;
 
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
@@ -42,6 +47,11 @@ public class ProductDTO implements Serializable {
                 .price(product.getPrice())
                 .introduction(product.getIntroduction())
                 .retailProduct(product.getRetailProduct())
+                .origin(product.getOrigin())
+                .producer(product.getProducer())
+                .storageMethod(product.getStorageMethod())
+                .weightPerUnit(product.getWeightPerUnit())
+                .composition(product.getComposition())
                 .createdAt(product.getCreatedAt())
                 .updatedAt(product.getUpdatedAt())
                 .pricePercent(
