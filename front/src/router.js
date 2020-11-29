@@ -50,7 +50,7 @@ export default new Router({
                 },
                 {
                     name: 'Product Detail',
-                    path: 'pages/productDetail',
+                    path: 'pages/productDetail/:productId',
                     component: () => import('@/views/pages/ProductDetail'),
                 },
                 {

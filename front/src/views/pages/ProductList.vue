@@ -17,15 +17,15 @@
       <v-col cols="12" lg="12" v-for="item in productList" v-bind:key="item.id">
         <v-card>
           <v-row class="mt-6 pa-3">
-            <v-col cols="8">
+            <v-col cols="7">
               <h4 class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">{{ item.title }}</h4>
               <small class="blue-grey--text text--darken-2">{{ item.productionArea }} | {{ item.productionDate }} 이후</small><br/>
-              <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">{{ ranStar(item.reviewCount) }}</b>
+              <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px gray">{{ ranStar(item.reviewCount) }}</b>
               <small class="blue-grey--text text--darken-2">({{ item.reviewCount }})</small><br/>
               <b style="font-size: 24px;">{{ item.price }}원</b> <i style="text-decoration:line-through;">{{ item.retailProduct.todayAvgPrice }}</i>
             </v-col>
-            <v-col cols="4" style="text-align: right;">
-              <img src="img/3.png"  style="max-width: 128px;border-radius: 7px;
+            <v-col cols="5" style="text-align: right;">
+              <img src="img/3.png" style="max-width: 128px;border-radius: 7px;
                             -moz-border-radius: 7px;
                             -khtml-border-radius: 7px;
                             -webkit-border-radius: 7px;">
@@ -117,7 +117,6 @@ import {BUS} from "@/views/pages/EventBus";
 export default {
   name: "Profile",
 
-  //this.$route.params.category;
   data: () => ({
     productList : [],
 

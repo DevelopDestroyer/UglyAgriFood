@@ -8,12 +8,14 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     components: { BUS },
     state: {
-        API_HOST: 'http://localhost:8080',
+        //local
+        //API_HOST: 'http://localhost:8080',
+        //product
+        API_HOST: 'http://35.185.255.70:8080',
         isLogin: false,
         userEmail : '',
         userName : '',
         userSeq : '',
-
 
         Sidebar_drawer: null,
         Customizer_drawer: false,
@@ -37,6 +39,21 @@ export default new Vuex.Store({
     },
     actions: {
         ///////////////////////////////////////////////////////////
+        //    * REVIEW API
+        ///////////////////////////////////////////////////////////
+        GET_REVIEW_DETAIL_DATA (context, payload) {
+            return Axios.get(this.state.API_HOST + '/api/reviews?productId=' + payload.productId)
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                    //BUS.$emit('alertModalOpen', error);
+                })
+        },
+        ///////////////////////////////////////////////////////////
         //    * PRODUCT API
         ///////////////////////////////////////////////////////////
         GET_PRODUCT_DATA (context, payload) {
@@ -52,6 +69,18 @@ export default new Vuex.Store({
                 param = '?categoryName=' + payload.keyword;
             }
             return Axios.get(this.state.API_HOST + '/api/products' + param)
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                    //BUS.$emit('alertModalOpen', error);
+                })
+        },
+        GET_PRODUCT_DETAIL_DATA (context, payload) {
+            return Axios.get(this.state.API_HOST + '/api/products/' + payload.productId)
                 .then((result) => {
                     console.log(payload.data);
                     return result

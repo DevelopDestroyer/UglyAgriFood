@@ -11,19 +11,19 @@
                 </v-col>
                 <v-col cols="4">
                   <img
-                      src="img/1.png"
+                      src="img/main1.png"
                       alt="user"
-                      class="rounded-circle"
                       width="85px;"
+                      style="border-radius: 20%; border: solid 1px #efefef; box-shadow: 5px 5px 5px #efefef;"
                       @click="goProductList('all')"
                   />
                   <h4 @click="goProductList('all')" class="font-weight-regular"  style="font-size: 18px; color: #444444">전체보기</h4>
                 </v-col>
                 <v-col cols="4">
                   <img
-                      src="img/2.png"
+                      src="img/main2.png"
                       alt="user"
-                      class="rounded-circle"
+                      style="border-radius: 20%; border: solid 1px #efefef; box-shadow: 5px 5px 5px #efefef;"
                       width="85px"
                       @click="goProductList('농산물')"
                   />
@@ -31,9 +31,9 @@
                 </v-col>
                 <v-col cols="4">
                   <img
-                      src="img/3.png"
+                      src="img/main3.png"
                       alt="user"
-                      class="rounded-circle"
+                      style="border-radius: 20%; border: solid 1px #efefef; box-shadow: 5px 5px 5px #efefef;"
                       width="85px"
                       @click="goProductList('수산물')"
                   />
@@ -41,9 +41,9 @@
                 </v-col>
                 <v-col cols="4">
                   <img
-                      src="img/4.png"
+                      src="img/main4.png"
                       alt="user"
-                      class="rounded-circle"
+                      style="border-radius: 20%; border: solid 1px #efefef; box-shadow: 5px 5px 5px #efefef;"
                       width="85px;"
                       @click="goProductList('축산물')"
                   />
@@ -51,9 +51,9 @@
                 </v-col>
                 <v-col cols="4">
                   <img
-                      src="img/5.png"
+                      src="img/main5.png"
                       alt="user"
-                      class="rounded-circle"
+                      style="border-radius: 20%; border: solid 1px #efefef; box-shadow: 5px 5px 5px #efefef;"
                       width="85px;"
                       @click="goProductList('가공물')"
                   />
@@ -61,9 +61,9 @@
                 </v-col>
                 <v-col cols="4">
                   <img
-                      src="img/6.png"
+                      src="img/main6.png"
                       alt="user"
-                      class="rounded-circle"
+                      style="border-radius: 20%; border: solid 1px #efefef; box-shadow: 5px 5px 5px #efefef;"
                       width="85px;"
                       @click="goProductList('기타')"
                   />
@@ -75,6 +75,39 @@
         </v-card>
         <v-card class="mb-7">
         </v-card>
+      </v-col>
+
+      <v-col cols="12" lg="12" style="height:170px;">
+        <div style="width:100%; display: flex;">
+          <div style="flex: 1;">
+          </div>
+          <div style="width:378px;">
+            <image-slider style="height:200px;">
+              <transition-group name='fade' tag='div'>
+                <div
+                    v-for="number in [currentNumber]"
+                    :key='number'
+                >
+                  <img
+                      :src="currentImage"
+                      v-on:mouseover="stopRotation"
+                      v-on:mouseout="startRotation"
+                  />
+                </div>
+              </transition-group>
+
+            </image-slider>
+          </div>
+          <div style="flex: 1;">
+          </div>
+
+        </div>
+        <!--div style="width:100%; text-align: center;">
+          <p>
+            <a @click="prev" style="color:darkgray">◀</a> || <a @click="next" style="color:darkgray">▶</a>
+          </p>
+
+        </div-->
       </v-col>
 
 
@@ -117,7 +150,7 @@
                       />
                       <h6 class="font-weight-regular" style="font-size:14px;">{{item.name}}</h6>
                       <h6 class="op-5 font-weight-regular" style="font-size:10px;">
-                        <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">{{ ranStar(item.reviewCount) }}</b>
+                        <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px gray">{{ ranStar(item.reviewCount) }}</b>
                         ({{item.reviewCount}})
                       </h6>
                       <h6 class="op-5 font-weight-regular" style="font-size:10px;">시세 평균 <span style="text-decoration:line-through; font-size: 10px;"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
@@ -173,7 +206,7 @@
                       />
                       <h6 class="font-weight-regular" style="font-size:14px;">{{item.name}}</h6>
                       <h6 class="op-5 font-weight-regular" style="font-size:10px;">
-                        <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">{{ ranStar(item.reviewCount) }}</b>
+                        <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px gray">{{ ranStar(item.reviewCount) }}</b>
                         ({{ item.reviewCount }})
                       </h6>
                       <h6 class="op-5 font-weight-regular" style="font-size:10px;">시세 평균 <span style="text-decoration:line-through"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
@@ -197,12 +230,17 @@
 
       export default {
         name: "Main",
-
+        el: 'image-slider',
         data: () => ({
           //main data api
           recommendProductList : [],
           cheapProductList : [],
           relatedProductList : [],
+
+
+          images: ['img/banner1.png', 'img/banner2.png', 'img/banner3.png'],
+          currentNumber: 0,
+          timer: null,
 
           dtext: "George deo",
           emailtext: "",
@@ -223,7 +261,33 @@
         created () {
           this.getMainData();
         },
+        mounted: function () {
+          this.startRotation();
+        },
+
+        computed: {
+          currentImage: function() {
+            return this.images[Math.abs(this.currentNumber) % this.images.length];
+          }
+        },
         methods: {
+          startRotation: function() {
+            this.timer = setInterval(this.next, 3000);
+          },
+
+          stopRotation: function() {
+            clearTimeout(this.timer);
+            this.timer = null;
+          },
+
+          next: function() {
+            this.currentNumber += 1
+          },
+          prev: function() {
+            this.currentNumber -= 1
+          },
+
+
           goProductList(param){
             location.href= "/#/pages/ProductList/"+param;
           },

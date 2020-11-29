@@ -2,7 +2,6 @@
   <v-card class="mb-7">
     <v-toolbar flat>
         <v-toolbar-title>
-            
             {{ heading }}
         </v-toolbar-title>
 
