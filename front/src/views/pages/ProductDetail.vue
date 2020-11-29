@@ -11,15 +11,15 @@
               <table style="width: 100%;">
                 <tr>
                   <td style="width: 35%; color:dimgray;">원산지</td>
-                  <td>{{ productDetailData.productionArea }}</td>
+                  <td>{{ productDetailData.origin }}</td>
                 </tr>
                 <tr>
                   <td style="width: 35%; color:dimgray;">생산자</td>
-                  <td>해남농협</td>
+                  <td>{{ productDetailData.productionArea }}</td>
                 </tr>
                 <tr>
                   <td style="width: 35%; color:dimgray;">보관방법, 취급방법</td>
-                  <td>상온보관</td>
+                  <td>{{ productDetailData.storageMethod }}</td>
                 </tr>
                 <tr>
                   <td style="width: 35%; color:dimgray;">제조년월일</td>
@@ -27,11 +27,11 @@
                 </tr>
                 <tr>
                   <td style="width: 35%; color:dimgray;">개당중량</td>
-                  <td>3kg</td>
+                  <td>{{ productDetailData.weightPerUnit }}</td>
                 </tr>
                 <tr>
                   <td style="width: 35%; color:dimgray;">상품구성</td>
-                  <td>고구마 3kg, 1개</td>
+                  <td>{{ productDetailData.composition }}</td>
                 </tr>
               </table>
             </BaseCard>
