@@ -33,6 +33,6 @@ public class RetailProductService {
         List<RetailProduct> retailProducts = retailProductRepository.findAll();
         return retailProducts.stream()
                 .filter(retailProduct -> title.contains(retailProduct.getName()))
-                .findFirst().orElse(null);
+                .findFirst().orElse(retailProducts.get(0));
     }
 }

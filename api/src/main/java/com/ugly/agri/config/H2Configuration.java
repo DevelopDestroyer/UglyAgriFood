@@ -36,7 +36,7 @@ public class H2Configuration {
 
     @Bean
     public void setTestData() throws IOException {
-        crawling();
+//        crawling();
         List<User> userList = userRepository.saveAll(getUserList());
         List<Product> productList = productRepository.saveAll(
                 getProductList(userList, retailProductRepository.saveAll(getRetailProductList())));
