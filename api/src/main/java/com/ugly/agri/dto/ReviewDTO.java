@@ -13,6 +13,7 @@ public class ReviewDTO {
     private String userName;
     private String productName;
     private String content;
+    private Integer grade;
 
     public static ReviewDTO of(Review review) {
         return ReviewDTO.builder()
@@ -22,6 +23,7 @@ public class ReviewDTO {
                 .userName(review.getUser().getName())
                 .productName(review.getProduct().getTitle())
                 .content(review.getContent())
+                .grade(review.getGrade())
                 .build();
     }
 }

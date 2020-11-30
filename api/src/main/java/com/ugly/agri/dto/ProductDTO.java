@@ -9,6 +9,7 @@ import lombok.Getter;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.OptionalDouble;
 
 @Builder
 @Getter
@@ -35,8 +36,10 @@ public class ProductDTO implements Serializable {
 //    private final String imageUrl;
 
     private final Integer reviewCount;
+    private final double reviewGradeAvg;
 
     public static ProductDTO of(Product product) {
+        OptionalDouble gradeAvg = product.getReviews().stream().mapToDouble(r -> r.getGrade()).average();
         return ProductDTO.builder()
                 .userDTO(UserDTO.of(product.getUser()))
                 .id(product.getId())
@@ -60,6 +63,7 @@ public class ProductDTO implements Serializable {
                                 (int) (product.getPrice() * 100 /
                                         Integer.parseInt(product.getRetailProduct().getTodayAvgPrice().replaceAll(",", ""))))
                 .reviewCount(product.getReviews() == null ? 0 : product.getReviews().size())
+                .reviewGradeAvg(gradeAvg.isPresent() ? gradeAvg.getAsDouble() : 0)
                 .build();
     }
 }

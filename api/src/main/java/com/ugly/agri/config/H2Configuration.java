@@ -228,18 +228,21 @@ public class H2Configuration {
                 .user(userList.get(0))
                 .product(productList.get(0))
                 .content("난 관리자다")
+                .grade(5)
                 .build());
 
         list.add(Review.builder()
                 .user(userList.get(1))
                 .product(productList.get(1))
                 .content("난 판매자다")
+                .grade(3)
                 .build());
 
         list.add(Review.builder()
                 .user(userList.get(2))
                 .product(productList.get(1))
                 .content("난 구매자다")
+                .grade(4)
                 .build());
 
         return list;
