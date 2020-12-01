@@ -22,7 +22,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Configuration
-//@Profile("local")
+@Profile("local")
 @RequiredArgsConstructor
 public class H2Configuration {
     private final UserRepository userRepository;
