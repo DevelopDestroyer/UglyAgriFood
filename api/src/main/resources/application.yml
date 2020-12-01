@@ -2,10 +2,6 @@ spring:
   profiles:
     active: local
 
-product:
-  img:
-    path: classpath:static/img/product
-
 ---
 
 spring:
@@ -37,6 +33,10 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
+
+resources:
+  location: classpath:product/
+  uri_path: /download
 
 ---
 
@@ -70,3 +70,7 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
+
+resources:
+  location: /opt/ugly-agri-food/img
+  uri_path: /download

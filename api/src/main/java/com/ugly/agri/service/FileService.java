@@ -25,8 +25,11 @@ public class FileService {
 
     private final ProductService productService;
 
-    @Value("${product.img.path}")
-    private String basePath;
+    @Value("${resources.location}")
+    private String resourcesLocation;
+
+    @Value("${resources.uri_path}")
+    private String resourcesUriPath;
 
     @Transactional
     public void createProductImg(Long id, List<MultipartFile> fileList) throws IOException {
@@ -46,14 +49,14 @@ public class FileService {
     }
 
     public ImageFileVO makeImageFileVO(Long id) throws FileNotFoundException {
-        String fullPath = ResourceUtils.getFile(basePath).getAbsolutePath();
-
+        String fullPath = ResourceUtils.getFile(resourcesLocation).getAbsolutePath();
+        log.info("basePath = {}, fullPath = {}", resourcesLocation, fullPath);
         return ImageFileVO.builder()
                 .product_id(id)
                 .mainImageFullPath(fullPath + File.separator + id + MAIN_NAME)
                 .thumbnailImageFullPath(fullPath + File.separator + id + THUMBNAIL_NAME)
-                .mainImageUrlPath(basePath.substring(basePath.indexOf("/")) + File.separator + id + MAIN_NAME)
-                .thumbnailImageUrlPath(basePath.substring(basePath.indexOf("/")) + File.separator + id + THUMBNAIL_NAME)
+                .mainImageUrlPath(resourcesUriPath + File.separator + id + MAIN_NAME)
+                .thumbnailImageUrlPath(resourcesUriPath+ File.separator + id + THUMBNAIL_NAME)
                 .build();
     }
 }
