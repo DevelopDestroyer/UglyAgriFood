@@ -16,8 +16,8 @@ public enum CategoryType {
     PROCESSED_PRODUCTS("가공품"),
     ETC("기타");
 
-    private String categoryName;
-    private static Map map = new HashMap<>();
+    private final String categoryName;
+    private static final Map<String, CategoryType> map = new HashMap<>();
 
     static {
         for (CategoryType categoryType : CategoryType.values()) {
@@ -26,8 +26,8 @@ public enum CategoryType {
     }
 
     public static CategoryType constantOf(String categoryName) {
-        CategoryType categoryType = (CategoryType) map.get(categoryName);
-        if (categoryType == null){
+        CategoryType categoryType = map.get(categoryName);
+        if (categoryType == null) {
             throw new IllegalArgumentException("일치하는 Enum 상수가 없습니다 : " + categoryName);
         }
         return categoryType;

@@ -3,7 +3,9 @@ package com.ugly.agri.config;
 import com.google.common.collect.Lists;
 import com.ugly.agri.domain.*;
 import com.ugly.agri.repository.*;
+import com.ugly.agri.service.FileService;
 import com.ugly.agri.type.CategoryType;
+import com.ugly.agri.vo.ImageFileVO;
 import lombok.RequiredArgsConstructor;
 import org.h2.tools.Server;
 import org.jsoup.Jsoup;
@@ -12,15 +14,15 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
 @Configuration
-@Profile("local")
+//@Profile("local")
 @RequiredArgsConstructor
 public class H2Configuration {
     private final UserRepository userRepository;
@@ -28,6 +30,8 @@ public class H2Configuration {
     private final ReviewRepository reviewRepository;
     private final ProductRepository productRepository;
     private final RetailProductRepository retailProductRepository;
+
+    private final FileService fileService;
 
     @Bean
     public Server h2TcpServer() throws SQLException {
@@ -137,9 +141,10 @@ public class H2Configuration {
         return list;
     }
 
-    private List<Product> getProductList(List<User> userList, List<RetailProduct> retailProductList) {
+    private List<Product> getProductList(List<User> userList, List<RetailProduct> retailProductList) throws FileNotFoundException {
         List<Product> list = Lists.newArrayList();
 
+        ImageFileVO imageFileVO = fileService.makeImageFileVO(1L);
         list.add(Product.builder()
                 .user(userList.get(1))
                 .title("못난이 사과")
@@ -154,9 +159,11 @@ public class H2Configuration {
                 .storageMethod("냉장고")
                 .weightPerUnit("3kg")
                 .composition("사과 3kg")
-//                .imageUrl("img/0.jpg")
+                .mainImagePath(imageFileVO.getMainImageUrlPath())
+                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
                 .build());
 
+        imageFileVO = fileService.makeImageFileVO(2L);
         list.add(Product.builder()
                 .user(userList.get(1))
                 .title("못난이 감자")
@@ -171,9 +178,11 @@ public class H2Configuration {
                 .storageMethod("상온")
                 .weightPerUnit("5kg")
                 .composition("감자 5kg")
-//                .imageUrl("img/1.jpg")
+                .mainImagePath(imageFileVO.getMainImageUrlPath())
+                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
                 .build());
 
+        imageFileVO = fileService.makeImageFileVO(3L);
         list.add(Product.builder()
                 .user(userList.get(1))
                 .title("못난이 고구마")
@@ -188,7 +197,8 @@ public class H2Configuration {
                 .storageMethod("냉장고")
                 .weightPerUnit("2kg")
                 .composition("고구마 2kg")
-//                .imageUrl("img/2.jpg")
+                .mainImagePath(imageFileVO.getMainImageUrlPath())
+                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
                 .build());
 
         return list;
