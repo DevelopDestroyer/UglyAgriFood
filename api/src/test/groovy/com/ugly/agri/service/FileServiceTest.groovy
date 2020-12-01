@@ -6,7 +6,7 @@ import spock.lang.Specification
 class FileServiceTest extends Specification {
     def "리소스 경로 확인"() {
         given:
-        String localPath = "classpath:static/img/product"
+        String localPath = "classpath:product/"
         String serverPath = "/opt/uglyAgriFood/img"
 
         when:
