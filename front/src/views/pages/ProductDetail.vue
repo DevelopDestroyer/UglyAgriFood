@@ -166,10 +166,10 @@
             <BaseCard heading="구매하기">
               <table style="width:100%">
                 <tr>
-                  <td style="width: 20%">
-                    <v-btn class="text-capitalize mt-0 element-0" color=""><b style="font-size: 24px; color:#FF9999">♥</b>찜하기</v-btn>
+                  <td style="width: 15%">
+                    가격 :
                   </td>
-                  <td style="width: 30%; text-align: right;">
+                  <td style="width: 37%; text-align: right;">
                     <b style="font-size: 20px;">{{productDetailData.price * cnt}}원</b>
                   </td>
                   <td style="text-align: right;">
@@ -183,9 +183,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td colspan="3">
+                  <td colspan="3" style="text-align: center;">
                     <br/>
-                    <v-btn dark color="success" style="width:100%">구매하기</v-btn>
+                    <v-btn class="text-capitalize mt-0 element-0" color="" style="margin-right: 10px;"><b style="font-size: 24px; color:#FF9999">♥</b>찜하기</v-btn>
+                    <v-btn dark color="success" style="width:60%">구매하기</v-btn>
                   </td>
                 </tr>
               </table>

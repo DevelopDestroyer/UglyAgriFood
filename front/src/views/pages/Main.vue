@@ -77,12 +77,12 @@
         </v-card>
       </v-col>
 
-      <v-col cols="12" lg="12" style="height:170px;">
+      <v-col cols="12" lg="12" style="height:140px;">
         <div style="width:100%; display: flex;">
           <div style="flex: 1;">
           </div>
-          <div style="width:378px;">
-            <image-slider style="height:200px;">
+          <div style="width:280px;">
+            <image-slider style="height:140px;">
               <transition-group name='fade' tag='div'>
                 <div
                     v-for="number in [currentNumber]"
@@ -90,6 +90,7 @@
                 >
                   <img
                       :src="currentImage"
+                      style="max-width:280px;"
                       v-on:mouseover="stopRotation"
                       v-on:mouseout="startRotation"
                   />
@@ -121,7 +122,7 @@
 
               <table style="width:100%;">
                 <tr>
-                  <td style="width:70%;">
+                  <td style="width:60%;">
                     <span style="color:#444444; font-size: 18px;" class="mx-2" v-if="this.$store.state.userName == ''"><b>비회원님을 위한 추천상품</b></span>
                     <span style="color:#444444; font-size: 18px;" class="mx-2" v-else><b>{{this.$store.state.userName }}님을 위한 추천상품</b></span>
                   </td>
@@ -137,7 +138,7 @@
             <div style="width: auto; height: 230px; overflow-x: scroll; white-space: nowrap;">
               <table>
                 <tr>
-                  <td valign="top" v-for="item in recommendProductList" v-bind:key="item.id">
+                  <td valign="top" v-for="item in recommendProductList" v-bind:key="item.id" @click="goProductDetail(item.id)">
                     <div class="text-left"  style="width:140px; white-space: normal;">
                       <img
                           src="img/1.png"
@@ -177,9 +178,9 @@
 
               <table style="width:100%;">
                 <tr>
-                  <td style="width:70%;">
+                  <td style="width:60%;">
                     <!--h5 class="title blue-grey--text text--darken-2 font-weight-regular mb-4">평균시세보다 50% 이상 저렴해요!</h5-->
-                    <span style="color:#444444; font-size: 18px;" class="mx-2"><b>시세보다 50%이상 저렴해요!</b></span>
+                    <span style="color:#444444; font-size: 18px;" class="mx-2"><b>시세보다 50% 이상 저렴해요!</b></span>
                   </td>
                   <td style="text-align: right;">
                     <span class="mx-4 success--text"><b style="color:#f76707; font-size: 16px;">더보기＞</b></span>
@@ -193,7 +194,7 @@
             <div style="width: auto; height: 230px; overflow-x: scroll; white-space: nowrap;">
               <table>
                 <tr>
-                  <td valign="top" v-for="item in cheapProductList" v-bind:key="item.id">
+                  <td valign="top" v-for="item in cheapProductList" v-bind:key="item.id" @click="goProductDetail(item.id)">
                     <div class="text-left"  style="width:140px; white-space: normal">
                       <img
                           src="img/1.png"
@@ -286,7 +287,9 @@
           prev: function() {
             this.currentNumber -= 1
           },
-
+          goProductDetail(param){
+            location.href= "/#/pages/ProductDetail/"+param;
+          },
 
           goProductList(param){
             location.href= "/#/pages/ProductList/"+param;
