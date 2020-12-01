@@ -3,6 +3,7 @@ package com.ugly.agri.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.ugly.agri.domain.Product;
 import com.ugly.agri.domain.RetailProduct;
+import com.ugly.agri.domain.Review;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -29,17 +30,19 @@ public class ProductDTO implements Serializable {
     private final String storageMethod;
     private final String weightPerUnit;
     private final String composition;
+    private final String mainImagePath;
+    private final String thumbnailImagePath;
 
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
     private final Integer pricePercent;
-//    private final String imageUrl;
 
     private final Integer reviewCount;
     private final double reviewGradeAvg;
 
     public static ProductDTO of(Product product) {
-        OptionalDouble gradeAvg = product.getReviews().stream().mapToDouble(r -> r.getGrade()).average();
+        OptionalDouble gradeAvg = product.getReviews().stream().mapToDouble(Review::getGrade).average();
+
         return ProductDTO.builder()
                 .userDTO(UserDTO.of(product.getUser()))
                 .id(product.getId())
@@ -54,14 +57,13 @@ public class ProductDTO implements Serializable {
                 .producer(product.getProducer())
                 .storageMethod(product.getStorageMethod())
                 .weightPerUnit(product.getWeightPerUnit())
+                .mainImagePath(product.getMainImagePath())
+                .thumbnailImagePath(product.getThumbnailImagePath())
                 .composition(product.getComposition())
                 .createdAt(product.getCreatedAt())
                 .updatedAt(product.getUpdatedAt())
-                .pricePercent(
-                        product.getRetailProduct() == null ?
-                                null :
-                                (int) (product.getPrice() * 100 /
-                                        Integer.parseInt(product.getRetailProduct().getTodayAvgPrice().replaceAll(",", ""))))
+                .pricePercent((int) (product.getPrice() * 100 /
+                        Integer.parseInt(product.getRetailProduct().getTodayAvgPrice().replaceAll(",", ""))))
                 .reviewCount(product.getReviews() == null ? 0 : product.getReviews().size())
                 .reviewGradeAvg(gradeAvg.isPresent() ? gradeAvg.getAsDouble() : 0)
                 .build();

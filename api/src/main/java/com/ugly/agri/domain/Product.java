@@ -1,7 +1,6 @@
 package com.ugly.agri.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.google.common.collect.Lists;
 import com.ugly.agri.type.CategoryType;
 import lombok.*;
 
@@ -68,10 +67,15 @@ public class Product extends BaseEntity {
     @Column(name = "composition", nullable = false)
     private String composition;
 
-    //    @Column(name = "image_url", nullable = false)
-    //    private String imageUrl;
+    // 메인 이미지
+    @Column(name = "main_image_path")
+    private String mainImagePath;
+
+    // 썸네일 이미지
+    @Column(name = "thumbnail_image_path")
+    private String thumbnailImagePath;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private List<Review> reviews = Lists.newArrayList();
+    private List<Review> reviews;
 }

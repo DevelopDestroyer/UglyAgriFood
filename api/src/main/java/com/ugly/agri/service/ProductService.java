@@ -10,6 +10,7 @@ import com.ugly.agri.repository.ProductRepository;
 import com.ugly.agri.repository.ProductRepositorySupport;
 import com.ugly.agri.type.CategoryType;
 import com.ugly.agri.type.ErrorCode;
+import com.ugly.agri.vo.ImageFileVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,9 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepository;
     private final ProductRepositorySupport productRepositorySupport;
-    private final UserService userService;
     private final RetailProductService retailProductService;
+
+    private final UserService userService;
 
     public List<ProductDTO> getProductsByCondition(SearchProductDTO searchProductDTO) {
         List<Product> productList = productRepositorySupport.findByCondition(searchProductDTO);
@@ -61,7 +63,6 @@ public class ProductService {
         product.setStorageMethod(requestProductDTO.getStorageMethod());
         product.setWeightPerUnit(requestProductDTO.getWeightPerUnit());
         product.setComposition(requestProductDTO.getComposition());
-//        product.setImageUrl(requestProductDTO.getImageUrl());
 
         return ProductDTO.of(productRepository.save(product));
     }
@@ -77,5 +78,10 @@ public class ProductService {
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_EXIST_PRODUCT));
     }
 
-
+    public void updateProductImage(ImageFileVO imageFileVO) {
+        Product product = searchProduct(imageFileVO.getProduct_id());
+        product.setMainImagePath(imageFileVO.getMainImageUrlPath());
+        product.setThumbnailImagePath(imageFileVO.getThumbnailImageUrlPath());
+        productRepository.save(product);
+    }
 }

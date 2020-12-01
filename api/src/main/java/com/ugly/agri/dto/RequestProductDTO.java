@@ -44,22 +44,6 @@ public class RequestProductDTO implements Serializable {
     @NotBlank
     private final String composition;
 
-//    @NotBlank
-//    private final String imageUrl;
-
-
-//    public static RequestProductDTO of(Product product) {
-//        return RequestProductDTO.builder()
-//                .id(product.getId())
-//                .name(product.getName())
-//                .price(product.getPrice())
-//                .comment(product.getComment())
-//                .imageUrl(product.getImageUrl())
-//                .userDTO(UserDTO.of(product.getUser()))
-//                .category(product.getCategory())
-//                .build();
-//    }
-
     public Product toEntity(User user, RetailProduct retailProduct) {
         return Product.builder()
                 .user(user)
@@ -75,6 +59,8 @@ public class RequestProductDTO implements Serializable {
                 .storageMethod(storageMethod)
                 .weightPerUnit(weightPerUnit)
                 .composition(composition)
+                .mainImagePath(null)
+                .thumbnailImagePath(null)
                 .build();
     }
 }

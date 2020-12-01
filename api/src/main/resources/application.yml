@@ -2,6 +2,10 @@ spring:
   profiles:
     active: local
 
+product:
+  img:
+    path: classpath:static/img/product
+
 ---
 
 spring:
@@ -56,3 +60,13 @@ spring:
     username: root
     password: homework
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: INFO
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE

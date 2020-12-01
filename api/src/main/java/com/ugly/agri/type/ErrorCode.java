@@ -22,6 +22,9 @@ public enum ErrorCode {
 
     // RETAIL_PRODUCT
     NOT_EXIST_RETAIL_PRODUCT("R001", "해당 소매상품은 존재하지 않습니다."),
+
+    // IMAGE
+    UPLOAD_IMAGE_COUNT("I001", "업로드 이미지 개수가 맞지 않습니다.(메인이미지 1개, 썸네일 1개 있어야 합니다)"),
     ;
 
     private final String code;
