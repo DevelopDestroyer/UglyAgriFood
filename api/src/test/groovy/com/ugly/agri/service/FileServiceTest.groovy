@@ -16,15 +16,4 @@ class FileServiceTest extends Specification {
         then:
         noExceptionThrown()
     }
-
-    def "경로 자르기"() {
-        given:
-        String path = "classpath:static/img/product"
-
-        when:
-        String res = path.substring(path.indexOf("/"))
-
-        then:
-        res == "/img/product"
-    }
 }
