@@ -55,9 +55,9 @@
                       alt="user"
                       style="border-radius: 20%; border: solid 1px #efefef; box-shadow: 5px 5px 5px #efefef;"
                       width="85px;"
-                      @click="goProductList('가공물')"
+                      @click="goProductList('가공품')"
                   />
-                  <h4 @click="goProductList('가공물')" class="font-weight-regular" style="font-size: 18px; color: #444444">가공</h4>
+                  <h4 @click="goProductList('가공품')" class="font-weight-regular" style="font-size: 18px; color: #444444">가공</h4>
                 </v-col>
                 <v-col cols="4">
                   <img

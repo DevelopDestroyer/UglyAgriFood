@@ -29,19 +29,19 @@
                 background-color="transparent"
             ></v-text-field>
             <v-text-field
-                v-model="emailtext"
+                v-model="storageMethod"
                 label="보관방법/취급방법을 입력해주세요 (ex. 상온보관)"
                 filled
                 background-color="transparent"
             ></v-text-field>
             <v-text-field
-                v-model="emailtext"
+                v-model="weightPerUnit"
                 label="개당 중량을 입력해주세요 (ex. 3kg)"
                 filled
                 background-color="transparent"
             ></v-text-field>
             <v-text-field
-                v-model="emailtext"
+                v-model="composition"
                 label="상품구성을 입력해주세요 (ex. 고구마 3kg, 1개)"
                 filled
                 background-color="transparent"
@@ -68,7 +68,7 @@
             <br/>
 
             <div class="filebox">
-              <label for="ex_file">상품 설명 이미지 업로드</label>
+              <label for="ex_file" style="background-image: url(img/camera.png); width:80px; height:80px; background-color: white; border-color: white;"></label>
               <input type="file" id="ex_file" @change="explainImg = 1">
               <p v-if="explainImg == '' || explainImg == null">
                 상품 설명 이미지를 첨부해주세요 !
@@ -79,7 +79,7 @@
             </div>
 
             <div class="filebox">
-              <label for="th_file" style="background-image: url(img/1.png); width:100px; height:100px; background-color: white; border-color: white;">썸네일 이미지 업로드</label>
+              <label for="th_file" style="background-image: url(img/camera.png); width:80px; height:80px; background-color: white; border-color: white;"></label>
               <input type="file" id="th_file" @change="thumbnailImg = 1">
               <p v-if="thumbnailImg == '' || thumbnailImg == null">
                 썸네일 이미지를 첨부해주세요 ! (128 x 128 권장)
@@ -114,6 +114,9 @@ export default {
     productionArea : '',
     productionDate : '2020-12-07',
     introduction : '',
+    storageMethod : '',
+    weightPerUnit : '',
+    composition : '',
 
     dtext: "",
     emailtext: "",
@@ -145,12 +148,36 @@ export default {
         productionDate : this.productionDate,
         title : this.title,
         userId : this.$store.state.userSeq,
+        storageMethod : this.storageMethod,
+        weightPerUnit : this.weightPerUnit,
+        composition : this.composition
+      }).then((result) => {
+        if(result.data.statusCode == 'OK'){
+
+          this.postFile(result.data.data.id);
+        }
+        console.log("결과" + result);//바깥 리설트
+      })
+    },
+    postFile(id){
+      //const frm = new FormData();
+      //frm.append('name', 'file');
+      //frm.append('key', '값');
+      let frm = new FormData();
+      let photoFile = document.getElementById("ex_file");
+      let photoFile2 = document.getElementById("th_file");
+      frm.append("file", photoFile.files[0]);
+      frm.append("file", photoFile2.files[0]);
+
+      this.$store.dispatch('POST_FILE_DATA', {
+        file : frm,
+        id : id
       }).then((result) => {
         if(result.data.statusCode == 'OK'){
           BUS.$emit('alertModalOpen', '상품등록이 완료되었습니다.');
-          location.href="/";
+          //location.href="/";
         }
-        console.log("결과" + result);//바깥 리설트
+        console.log("결과2" + result);//바깥 리설트
       })
     }
   },

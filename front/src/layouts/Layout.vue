@@ -8,14 +8,14 @@
       </v-container>
     </v-content>
 
-    <Footer></Footer>
+    <!--Footer></Footer-->
   </v-app>
 </template>
 
 <script>
 import Header from "./header/Header";
 import Sidebar from "./sidebar/Sidebar";
-import Footer from "./footer/Footer";
+//import Footer from "./footer/Footer";
 import { mapState, mapMutations } from "vuex";
 export default {
   name: "Layout",
@@ -23,7 +23,7 @@ export default {
   components: {
     Header,
     Sidebar,
-    Footer
+    //Footer
   },
 
   props: {

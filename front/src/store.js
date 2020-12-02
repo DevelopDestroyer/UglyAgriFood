@@ -9,9 +9,9 @@ export default new Vuex.Store({
     components: { BUS },
     state: {
         //local
-        //API_HOST: 'http://localhost:8080',
+        API_HOST: 'http://localhost:8080',
         //product
-        API_HOST: 'http://35.185.255.70:8080',
+        //API_HOST: 'http://35.185.255.70:8080',
         isLogin: false,
         userEmail : '',
         userName : '',
@@ -99,7 +99,10 @@ export default new Vuex.Store({
                 'productionArea' : payload.productionArea,
                 'productionDate' : payload.productionDate,
                 'title' : payload.title,
-                'userId' : payload.userId
+                'userId' : payload.userId,
+                'storageMethod' : payload.storageMethod,
+                'weightPerUnit' : payload.weightPerUnit,
+                'composition' : payload.composition
             })
                 .then((result) => {
                     console.log(payload.data);
@@ -110,7 +113,22 @@ export default new Vuex.Store({
                     console.log(error);
                 })
         },
-
+        ///////////////////////////////////////////////////////////
+        //    * PRODUCT API
+        ///////////////////////////////////////////////////////////
+        POST_FILE_DATA (context, payload) {
+            return Axios.post(this.state.API_HOST + '/api/file/product/' + payload.id, payload.file,
+                { headers: { 'Content-Type': 'multipart/form-data' }}
+                )
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                })
+        },
         ///////////////////////////////////////////////////////////
         //    * MAIN API
         ///////////////////////////////////////////////////////////

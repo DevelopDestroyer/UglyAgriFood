@@ -13,28 +13,31 @@
                   <img
                       src="img/mypage1.png"
                       alt="user"
-                      width="80px"
+                      width="60px"
+                      @click="goBuyHistory()"
                   />
                 </v-col>
                 <v-col cols="3">
                   <img
                       src="img/mypage2.png"
                       alt="user"
-                      width="80"
+                      width="60"
                   />
                 </v-col>
                 <v-col cols="3">
                   <img
                       src="img/mypage3.png"
                       alt="user"
-                      width="80"
+                      width="60"
+                      @click="goMySalesList()"
                   />
                 </v-col>
                 <v-col cols="3">
                   <img
                       src="img/mypage4.png"
                       alt="user"
-                      width="80"
+                      width="60"
+                      @click="goProductUpload()"
                   />
                 </v-col>
               </v-row>
@@ -148,6 +151,20 @@
           },
           items: ["London", "India", "America"]
         }),
-        components: {}
+        components: {},
+        methods: {
+          goProductUpload(){
+            location.href="/#/pages/ProductUpload"
+          },
+          goMySalesList(){
+            location.href="/#/pages/MySalesList"
+          },
+          goBuyHistory(){
+            location.href="/#/pages/BuyHistory"
+          },
+
+
+        }
+
       };
       </script>

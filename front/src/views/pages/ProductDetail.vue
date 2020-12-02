@@ -162,6 +162,7 @@
               </v-alert>
 
             </BaseCard>
+          <div class="" style="position: fixed; bottom: 0px; width: 100%;">
 
             <BaseCard heading="구매하기">
               <table style="width:100%">
@@ -191,15 +192,16 @@
                 </tr>
               </table>
             </BaseCard>
+          </div>
 
         </v-col>
     </v-row>
   </v-container>
 </template>
-
+<Footer></Footer>
 <script>
 import {BUS} from "@/views/pages/EventBus";
-
+import Footer from "../../layouts/footer/Footer";
 const gradients = [
   ["#FF0000"],
   ["#FF0000"],
@@ -284,6 +286,8 @@ export default {
     width2: 4
   }),
   components: {
+    // eslint-disable-next-line vue/no-unused-components
+    Footer
   },
   created () {
     this.getProductDetailData();

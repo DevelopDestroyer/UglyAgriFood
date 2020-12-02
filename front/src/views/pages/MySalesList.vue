@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="down-top-padding">
-    <v-row>
+    <v-row >
       <v-col cols="12" lg="12">
         <v-card>
           <v-card-text class="text-left pa-3">
@@ -41,14 +41,14 @@
       <v-col cols="12" lg="12">
         <v-card v-if="isReviewWriteBefore">
         <v-row class="mt-1 pa-2">
-          <v-col cols="4" style="text-align: right;">
+          <v-col cols="5" style="text-align: right;">
 
             <img src="img/4.png"  style="max-width: 128px;border-radius: 7px;
                             -moz-border-radius: 7px;
                             -khtml-border-radius: 7px;
                             -webkit-border-radius: 7px;">
           </v-col>
-          <v-col cols="8">
+          <v-col cols="7">
             <small class="blue-grey--text text--darken-2">2020.11.10</small><br/>
             <h4 class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">국내산 햇 꿀밤고구마, 1kg, 1박스</h4>
             <br/>
@@ -59,6 +59,8 @@
         </v-row>
         </v-card>
       </v-col>
+      <div style="height:700px;">
+      </div>
 
     </v-row>
   </v-container>

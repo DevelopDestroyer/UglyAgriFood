@@ -16,13 +16,13 @@
           <v-col cols="12">
             <small class="blue-grey--text text--darken-2">{{item.product.createdAt.split('T')[0]}} {{item.product.createdAt.split('T')[1]}}</small>
           </v-col>
-          <v-col cols="4" style="text-align: right;">
+          <v-col cols="5" style="text-align: right;">
             <img v-bind:src="item.product.imageUrl"  style="max-width: 128px;border-radius: 7px;
                             -moz-border-radius: 7px;
                             -khtml-border-radius: 7px;
                             -webkit-border-radius: 7px;">
           </v-col>
-          <v-col cols="8">
+          <v-col cols="7">
             <h4 class="mt-2 title blue-grey--text text--darken-2 font-weight-regular">{{ item.product.name }}</h4>
             <small class="blue-grey--text text--darken-2">{{ item.product.comment }}</small><br/>
             <small class="blue-grey--text text--darken-2">{{ item.product.price }}원</small><br/>
@@ -33,6 +33,8 @@
         </v-row>
         </v-card>
       </v-col>
+      <div style="height:700px;">
+      </div>
 
     </v-row>
   </v-container>
