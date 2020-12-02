@@ -162,8 +162,10 @@
               </v-alert>
 
             </BaseCard>
-          <div class="" style="position: fixed; bottom: 0px; width: 100%;">
+          <div style="height:180px;">
+          </div>
 
+          <div class="" style="position: fixed; bottom: -28px; width: 100%; margin-left: -24px; box-shadow: 10px 10px 10px 10px grey">
             <BaseCard heading="구매하기">
               <table style="width:100%">
                 <tr>

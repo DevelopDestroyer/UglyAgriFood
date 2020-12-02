@@ -189,7 +189,7 @@ export default {
     logout(){
       this.$store.state.isLogin = false;
       this.$store.state.userEmail = '';
-      this.$store.state.userName = '';
+      this.$store.state.userName = '비회원';
       this.$store.state.userSeq = '';
     }
   },

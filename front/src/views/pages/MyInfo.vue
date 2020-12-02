@@ -7,7 +7,7 @@
             <div class="text-center">
               <v-row class="mt-0">
                 <v-col cols="12" style="text-align: left;">
-                  <h4 class="mt-0 title blue-grey--text text--darken-2 font-weight-regular"><b>이진영</b>님 안녕하세요!</h4><br/>
+                  <h4 class="mt-0 title blue-grey--text text--darken-2 font-weight-regular"><b>{{ this.state.userName }}</b>님 안녕하세요!</h4><br/>
                 </v-col>
                 <v-col cols="3">
                   <img
