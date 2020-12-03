@@ -23,6 +23,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
+  servlet:
+    multipart:
+      file-size-threshold: 100MB
+      max-file-size: 500MB
+      max-request-size: 500MB
 
 logging:
   level:
