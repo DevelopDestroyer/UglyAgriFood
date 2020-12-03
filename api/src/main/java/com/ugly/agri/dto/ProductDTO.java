@@ -1,6 +1,7 @@
 package com.ugly.agri.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.google.common.collect.Lists;
 import com.ugly.agri.domain.Product;
 import com.ugly.agri.domain.RetailProduct;
 import com.ugly.agri.domain.Review;
@@ -41,6 +42,10 @@ public class ProductDTO implements Serializable {
     private final double reviewGradeAvg;
 
     public static ProductDTO of(Product product) {
+        if(product.getReviews() == null) {
+            product.setReviews(Lists.newArrayList());
+        }
+
         OptionalDouble gradeAvg = product.getReviews().stream().mapToDouble(Review::getGrade).average();
 
         return ProductDTO.builder()
