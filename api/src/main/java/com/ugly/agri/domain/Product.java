@@ -1,6 +1,7 @@
 package com.ugly.agri.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.google.common.collect.Lists;
 import com.ugly.agri.type.CategoryType;
 import lombok.*;
 
@@ -77,5 +78,5 @@ public class Product extends BaseEntity {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
-    private List<Review> reviews;
+    private List<Review> reviews = Lists.newArrayList();
 }
