@@ -23,6 +23,12 @@
               background-color="transparent"
             ></v-text-field>
             <v-text-field
+                v-model="producer"
+                label="생산자를 입력해주세요 (ex. 해남농협)"
+                filled
+                background-color="transparent"
+            ></v-text-field>
+            <v-text-field
                 v-model="productionArea"
                 label="원산지를 입력해주세요 (ex. 충남 서산)"
                 filled
@@ -117,6 +123,8 @@ export default {
     storageMethod : '',
     weightPerUnit : '',
     composition : '',
+    producer : '',
+    origin : '',
 
     dtext: "",
     emailtext: "",
@@ -150,7 +158,9 @@ export default {
         userId : this.$store.state.userSeq,
         storageMethod : this.storageMethod,
         weightPerUnit : this.weightPerUnit,
-        composition : this.composition
+        composition : this.composition,
+        producer : this.producer,
+        origin : this.productionArea
       }).then((result) => {
         if(result.data.statusCode == 'OK'){
 
@@ -160,9 +170,6 @@ export default {
       })
     },
     postFile(id){
-      //const frm = new FormData();
-      //frm.append('name', 'file');
-      //frm.append('key', '값');
       let frm = new FormData();
       let photoFile = document.getElementById("ex_file");
       let photoFile2 = document.getElementById("th_file");
@@ -175,9 +182,9 @@ export default {
       }).then((result) => {
         if(result.data.statusCode == 'OK'){
           BUS.$emit('alertModalOpen', '상품등록이 완료되었습니다.');
-          //location.href="/";
+          location.href="/";
         }
-        console.log("결과2" + result);//바깥 리설트
+        //console.log("결과2" + result);//바깥 리설트
       })
     }
   },
