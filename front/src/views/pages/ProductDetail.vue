@@ -4,7 +4,7 @@
         <v-col cols="12" sm="12">
             <BaseCard v-bind:heading=productDetailData.title>
               <div class="text-center">
-                <img src="img/product_detail_sample.jpg" style="max-width: 100%"/>
+                <img v-bind:src="'download/' + productDetailData.id + '_mainImage.jpg'" style="max-width: 100%"/>
               </div>
             </BaseCard>
             <BaseCard heading="상품정보">
@@ -140,7 +140,7 @@
                   elevation="2"
               >
                 <v-list-item-avatar>
-                  <img src="https://randomuser.me/api/portraits/men/81.jpg" />
+                  <img src="img/user.jpg" />
                 </v-list-item-avatar>
                 <big><b>이태호짱</b></big>
                  / <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.5점<br>
@@ -154,11 +154,11 @@
                   elevation="2"
               >
                 <v-list-item-avatar>
-                  <img src="https://randomuser.me/api/portraits/men/81.jpg" />
+                  <img src="img/user.jpg" />
                 </v-list-item-avatar>
                 <big><b>이진영짱</b></big>
-                / <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 1점<br>
-                별로에요
+                / <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 3점<br>
+                무난합니다
               </v-alert>
 
             </BaseCard>
@@ -189,7 +189,7 @@
                   <td colspan="3" style="text-align: center;">
                     <br/>
                     <v-btn class="text-capitalize mt-0 element-0" color="" style="margin-right: 10px;"><b style="font-size: 24px; color:#FF9999">♥</b>찜하기</v-btn>
-                    <v-btn dark color="success" style="width:60%">구매하기</v-btn>
+                    <v-btn dark color="success" style="width:60%" @click="postOrder()">구매하기</v-btn>
                   </td>
                 </tr>
               </table>
@@ -198,6 +198,34 @@
 
         </v-col>
     </v-row>
+    <v-dialog
+        v-model="billingModal"
+        persistent
+        max-width="600px"
+    >
+      <v-card>
+        <v-card-title>
+          <span class="headline">구매하기</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12">
+                <center><h3>결제를 위한 지문인식을 진행합니다.</h3><br/>
+                <h2>{{productDetailData.price * cnt}}원</h2><br/>
+                <img src="img/jimoon.png" style="width:50px;"/></center>
+              </v-col>
+              <v-col cols="12">
+              </v-col>
+            </v-row>
+          </v-container>
+
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 <Footer></Footer>
@@ -227,6 +255,8 @@ export default {
 
   data: () => ({
     testTitle : "[버섯스토리] 무농약 생표고버섯 330g",
+    billingModal : false,
+    billingModalPassword : '',
     cnt : 1,
     p1 : 10000,
     p2 : 23000,
@@ -295,6 +325,28 @@ export default {
     this.getProductDetailData();
   },
   methods :{
+    postOrder(){
+      this.billingModal = true;
+      let vm = this;
+      setTimeout(function () {
+        let vm2 = vm;
+        vm.$store.dispatch('POST_ORDER_DATA', {
+          productId : vm.$route.params.productId,
+          quantity : vm.cnt
+        }).then((result) => {
+          if(result.data.statusCode == 'OK'){
+            console.log("정상응답");
+            console.log("order post api 응답 완료");
+            vm2.billingModal = false;
+            BUS.$emit('alertModalOpen', '결제가 완료되었습니다.');
+            location.href="/#/pages/buyHistory";
+          }
+          else{
+            BUS.$emit('alertModalOpen', result.data.message);
+          }
+        })
+      }, 3000);
+    },
     cntAdd(){
       this.cnt++;
     },

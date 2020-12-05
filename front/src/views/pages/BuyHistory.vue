@@ -17,7 +17,7 @@
             <small class="blue-grey--text text--darken-2">{{item.product.createdAt.split('T')[0]}} {{item.product.createdAt.split('T')[1]}}</small>
           </v-col>
           <v-col cols="5" style="text-align: right;">
-            <img v-bind:src="item.product.imageUrl"  style="max-width: 128px;border-radius: 7px;
+            <img v-bind:src="'download/' + item.product.id + '_thumbnailImage.jpg'"  style="max-width: 128px;border-radius: 7px;
                             -moz-border-radius: 7px;
                             -khtml-border-radius: 7px;
                             -webkit-border-radius: 7px;">
@@ -68,7 +68,10 @@ export default {
   }),
   components: {},
   created () {
+  },
+  mounted (){
     this.getBuyData();
+
   },
   methods: {
     getBuyData(){
@@ -82,7 +85,7 @@ export default {
         //console.log("결과" + result.data);//바깥 리설트
         if(result.data.statusCode == 'OK'){
           console.log("정상응답");
-          vm.myOrderList = result.data.data.recommendProductList;
+          vm.myOrderList = result.data.data;
 
           console.log("구매이력 api 응답 완료");
         }

@@ -97,7 +97,7 @@
           <v-card-text class="pa-5">
             <div class="text-center">
               <img
-                src="https://randomuser.me/api/portraits/men/81.jpg"
+                src="img/user.jpg"
                 alt="user"
                 class="rounded-circle"
                 width="100"

@@ -25,7 +25,7 @@
               <b style="font-size: 24px;">{{ item.price }}원</b> <i style="text-decoration:line-through;">{{ item.retailProduct.todayAvgPrice }}</i>
             </v-col>
             <v-col cols="6" style="text-align: right;" @click="goProductDetail(item.id)">
-              <img src="img/3.png" style="max-width: 128px;border-radius: 7px;
+              <img v-bind:src="'download/' + item.id + '_thumbnailImage.jpg'" style="max-width: 128px;border-radius: 7px;
                             -moz-border-radius: 7px;
                             -khtml-border-radius: 7px;
                             -webkit-border-radius: 7px;">

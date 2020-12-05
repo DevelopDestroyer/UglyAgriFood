@@ -166,7 +166,21 @@ export default new Vuex.Store({
                     //BUS.$emit('alertModalOpen', error);
                 })
         },
-
+        POST_ORDER_DATA (context, payload) {
+            return Axios.post(this.state.API_HOST + '/api/orders', {
+                'productId' : payload.productId,
+                'quantity': payload.quantity,
+                'userId' : this.state.userSeq
+            })
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                })
+        },
         ///////////////////////////////////////////////////////////
         //    * USER API
         ///////////////////////////////////////////////////////////

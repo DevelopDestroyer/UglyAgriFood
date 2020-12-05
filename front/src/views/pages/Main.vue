@@ -141,7 +141,7 @@
                   <td valign="top" v-for="item in recommendProductList" v-bind:key="item.id" @click="goProductDetail(item.id)">
                     <div class="text-left"  style="width:140px; white-space: normal;">
                       <img
-                          src="img/1.png"
+                          v-bind:src="'download/' + item.id + '_thumbnailImage.jpg'"
                           alt="product"
                           width="120px"
                           style="border-radius: 7px;
@@ -197,7 +197,7 @@
                   <td valign="top" v-for="item in cheapProductList" v-bind:key="item.id" @click="goProductDetail(item.id)">
                     <div class="text-left"  style="width:140px; white-space: normal">
                       <img
-                          src="img/1.png"
+                          v-bind:src="'download/' + item.id + '_thumbnailImage.jpg'"
                           alt="product"
                           width="120px"
                           style="border-radius: 7px;
