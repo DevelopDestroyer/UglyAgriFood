@@ -9,9 +9,9 @@ export default new Vuex.Store({
     components: { BUS },
     state: {
         //local
-        API_HOST: 'http://localhost:8080',
+        //API_HOST: 'http://localhost:8080',
         //product
-        //API_HOST: 'http://35.185.255.70:8080',
+        API_HOST: 'http://35.185.255.70:8080',
         isLogin: false,
         userEmail : '',
         userName : '비회원',
