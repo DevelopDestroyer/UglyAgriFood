@@ -104,10 +104,9 @@ public class InitService {
         List<Product> list = Lists.newArrayList();
 
         ImageFileVO imageFileVO = fileService.makeImageFileVO(1L);
-        String title = "맛만 좋은 못난이 사과!! 2kg";
         list.add(Product.builder()
                 .user(userList.get(1))
-                .title(title)
+                .title("맛만 좋은 못난이 사과!! 2kg")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .productionArea("광주")
                 .productionDate(LocalDate.now().minusDays(30))
@@ -124,10 +123,9 @@ public class InitService {
                 .build());
 
         imageFileVO = fileService.makeImageFileVO(2L);
-        title = "작고 맛있는 못난이 감자, 5kg";
         list.add(Product.builder()
                 .user(userList.get(1))
-                .title(title)
+                .title("작고 맛있는 못난이 감자, 5kg")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .productionArea("대구")
                 .productionDate(LocalDate.now().minusDays(10))
@@ -144,10 +142,9 @@ public class InitService {
                 .build());
 
         imageFileVO = fileService.makeImageFileVO(3L);
-        title = "국내산 햇 꿀밤고구마, 1kg, 1박스";
         list.add(Product.builder()
                 .user(userList.get(1))
-                .title(title)
+                .title("국내산 햇 꿀밤고구마, 1kg, 1박스")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .productionArea("부산")
                 .productionDate(LocalDate.now().minusDays(5))
@@ -167,10 +164,9 @@ public class InitService {
                 .build());
 
         imageFileVO = fileService.makeImageFileVO(4L);
-        title = "맛있는 양배추, 1포기";
         list.add(Product.builder()
                 .user(userList.get(1))
-                .title(title)
+                .title("맛있는 양배추, 1포기")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .productionArea("충주")
                 .productionDate(LocalDate.now().minusDays(3))
@@ -187,10 +183,9 @@ public class InitService {
                 .build());
 
         imageFileVO = fileService.makeImageFileVO(5L);
-        title = "크기가 엄청 큰 맛있는 수박 입니다. 1개";
         list.add(Product.builder()
                 .user(userList.get(1))
-                .title(title)
+                .title("크기가 엄청 큰 맛있는 수박 입니다. 1개")
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .productionArea("진주")
                 .productionDate(LocalDate.now().minusDays(6))
@@ -202,6 +197,44 @@ public class InitService {
                 .storageMethod("냉장고")
                 .weightPerUnit("800G")
                 .composition("수박 1개")
+                .mainImagePath(imageFileVO.getMainImageUrlPath())
+                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
+                .build());
+
+        imageFileVO = fileService.makeImageFileVO(6L);
+        list.add(Product.builder()
+                .user(userList.get(1))
+                .title("맛있는 오이 10개")
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .productionArea("전주")
+                .productionDate(LocalDate.now().minusDays(7))
+                .price(4000L)
+                .introduction("달고 맛있습니다.")
+                .retailProduct(retailProductList.get(5))
+                .origin("국내산")
+                .producer("충남 공주")
+                .storageMethod("냉장고")
+                .weightPerUnit("500g")
+                .composition("오이 10개")
+                .mainImagePath(imageFileVO.getMainImageUrlPath())
+                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
+                .build());
+
+        imageFileVO = fileService.makeImageFileVO(7L);
+        list.add(Product.builder()
+                .user(userList.get(1))
+                .title("못나고 맛있는 토마토 1kg")
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .productionArea("충주")
+                .productionDate(LocalDate.now().minusDays(1))
+                .price(2500L)
+                .introduction("못생겼지만 정말 달고 맛있습니다.\n끝내줘요!")
+                .retailProduct(retailProductList.get(6))
+                .origin("국내산")
+                .producer("충주")
+                .storageMethod("냉장고")
+                .weightPerUnit("1kg")
+                .composition("토마토 1kg")
                 .mainImagePath(imageFileVO.getMainImageUrlPath())
                 .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
                 .build());
@@ -270,6 +303,30 @@ public class InitService {
                 .twoWeekAvgPrice("15,237")
                 .oneMonthAvgPrice("16,947")
                 .oneYearAvgPrice("25,503")
+                .build());
+
+        list.add(RetailProduct.builder()
+                .name("오이")
+                .kind("가시계통(10개)")
+                .grade("상품")
+                .todayAvgPrice("8,276")
+                .oneDayAvgPrice("7,707")
+                .oneWeekAvgPrice("7,451")
+                .twoWeekAvgPrice("6,587")
+                .oneMonthAvgPrice("10,406")
+                .oneYearAvgPrice("8,925")
+                .build());
+
+        list.add(RetailProduct.builder()
+                .name("토마토")
+                .kind("토마토(1kg)")
+                .grade("상품")
+                .todayAvgPrice("5,120")
+                .oneDayAvgPrice("5,396")
+                .oneWeekAvgPrice("5,817")
+                .twoWeekAvgPrice("8,290")
+                .oneMonthAvgPrice("5,396")
+                .oneYearAvgPrice("4,587")
                 .build());
 
         return list;
