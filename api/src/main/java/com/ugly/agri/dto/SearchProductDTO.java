@@ -16,4 +16,6 @@ public class SearchProductDTO {
     private String title;
     @NotBlank
     private String categoryName;
+    @NotBlank
+    private Long userId;
 }

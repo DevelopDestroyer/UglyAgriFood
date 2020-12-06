@@ -32,6 +32,10 @@ public class ProductRepositorySupport extends QuerydslRepositorySupport {
             builder.and(product.category.eq(type));
         }
 
+        if (searchProductDTO.getUserId() != null) {
+            builder.and(product.user.id.eq(searchProductDTO.getUserId()));
+        }
+
         builder.and(product.isDeleted.eq(false));
 
         return queryFactory.selectFrom(product)
