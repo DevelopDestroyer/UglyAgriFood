@@ -149,7 +149,7 @@
                             -khtml-border-radius: 7px;
                             -webkit-border-radius: 7px;"
                       />
-                      <h6 class="font-weight-regular" style="font-size:14px;">{{item.name}}</h6>
+                      <h6 class="font-weight-regular" style="font-size:14px;">{{item.title}}</h6>
                       <h6 class="op-5 font-weight-regular" style="font-size:10px;">
                         <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px gray">{{ ranStar(item.reviewCount) }}</b>
                         ({{item.reviewCount}})
@@ -205,7 +205,7 @@
                             -khtml-border-radius: 7px;
                             -webkit-border-radius: 7px;"
                       />
-                      <h6 class="font-weight-regular" style="font-size:14px;">{{item.name}}</h6>
+                      <h6 class="font-weight-regular" style="font-size:14px;">{{item.title}}</h6>
                       <h6 class="op-5 font-weight-regular" style="font-size:10px;">
                         <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px gray">{{ ranStar(item.reviewCount) }}</b>
                         ({{ item.reviewCount }})
