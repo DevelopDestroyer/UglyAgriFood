@@ -38,7 +38,7 @@
             <BaseCard heading="상품소개">
               {{ productDetailData.introduction }}
             </BaseCard>
-            <BaseCard heading="'생표고버섯'의 시세">
+            <BaseCard heading="시세정보">
               <v-col cols="12" lg="12">
               <v-card>
                 <b style="color:red;">※ 시세대비 {{ 100 - productDetailData.pricePercent }}% 저렴합니다.</b>
@@ -129,7 +129,7 @@
             </BaseCard>
 
             <BaseCard heading="리뷰">
-              총 {{productDetailData.reviewCount}}개의 리뷰가 있습니다.
+              총 2개의 리뷰가 있습니다.
               <br/>
               <br/>
               <v-alert
@@ -142,8 +142,8 @@
                 <v-list-item-avatar>
                   <img src="img/user.jpg" />
                 </v-list-item-avatar>
-                <big><b>이태호짱</b></big>
-                 / <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 4.5점<br>
+                <big><b>jaehong123</b></big>
+                 / <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★</b><br>
                 너무 맛있네요
               </v-alert>
 
@@ -156,9 +156,9 @@
                 <v-list-item-avatar>
                   <img src="img/user.jpg" />
                 </v-list-item-avatar>
-                <big><b>이진영짱</b></big>
-                / <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★</b> 3점<br>
-                무난합니다
+                <big><b>jinyeong11</b></big>
+                / <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px #000">★★★★★</b><br>
+                맛있게 잘 먹겠습니다~
               </v-alert>
 
             </BaseCard>
