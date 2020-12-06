@@ -135,7 +135,7 @@
 
             <v-divider class="mb-4"></v-divider>
 
-            <div style="width: auto; height: 230px; overflow-x: scroll; white-space: nowrap;">
+            <div style="width: auto; height: 240px; overflow-x: scroll; white-space: nowrap;">
               <table>
                 <tr>
                   <td valign="top" v-for="item in recommendProductList" v-bind:key="item.id" @click="goProductDetail(item.id)">
@@ -191,7 +191,7 @@
 
             <v-divider class="mb-4"></v-divider>
 
-            <div style="width: auto; height: 230px; overflow-x: scroll; white-space: nowrap;">
+            <div style="width: auto; height: 240px; overflow-x: scroll; white-space: nowrap;">
               <table>
                 <tr>
                   <td valign="top" v-for="item in cheapProductList" v-bind:key="item.id" @click="goProductDetail(item.id)">

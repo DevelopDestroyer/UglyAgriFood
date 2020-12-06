@@ -172,7 +172,7 @@ export default {
       location.href="/#/pages/join";
     },
     goHome(){
-      location.href="/";
+      location.href="/#/pages/main";
     },
     goMypage(){
       location.href="/#/pages/myInfo";
