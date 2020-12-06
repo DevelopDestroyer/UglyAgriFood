@@ -111,7 +111,7 @@ public class InitService {
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .productionArea("광주")
                 .productionDate(LocalDate.now().minusDays(30))
-                .price(9900L)
+                .price(23000L)
                 .introduction("흠집이 좀 있는데 단맛이 많아서 일반사과랑 맛이 똑같습니다.")
                 .retailProduct(retailProductList.get(0))
                 .origin("국내산")
