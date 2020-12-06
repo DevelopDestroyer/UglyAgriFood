@@ -182,7 +182,7 @@ export default {
       }).then((result) => {
         if(result.data.statusCode == 'OK'){
           BUS.$emit('alertModalOpen', '상품등록이 완료되었습니다.');
-          location.href="/";
+          location.href="/#/pages/main";
         }
         //console.log("결과2" + result);//바깥 리설트
       })
