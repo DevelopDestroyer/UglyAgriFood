@@ -99,6 +99,76 @@ public class InitService {
         return list;
     }
 
+    private List<Product> getProductList(List<User> userList, List<RetailProduct> retailProductList)
+            throws FileNotFoundException {
+        List<Product> list = Lists.newArrayList();
+
+        ImageFileVO imageFileVO = fileService.makeImageFileVO(1L);
+        String title = "맛만 좋은 못난이 사과!! 2kg";
+        list.add(Product.builder()
+                .user(userList.get(1))
+                .title(title)
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .productionArea("광주")
+                .productionDate(LocalDate.now().minusDays(30))
+                .price(9900L)
+                .introduction("흠집이 좀 있는데 단맛이 많아서 일반사과랑 맛이 똑같습니다.")
+                .retailProduct(retailProductList.get(0))
+                .origin("국내산")
+                .producer("해남화산농협")
+                .storageMethod("냉장고")
+                .weightPerUnit("2kg")
+                .composition("사과 2kg, 1개")
+                .mainImagePath(imageFileVO.getMainImageUrlPath())
+                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
+                .build());
+
+        imageFileVO = fileService.makeImageFileVO(2L);
+        title = "작고 맛있는 못난이 감자, 5kg";
+        list.add(Product.builder()
+                .user(userList.get(1))
+                .title(title)
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .productionArea("대구")
+                .productionDate(LocalDate.now().minusDays(10))
+                .price(12000L)
+                .introduction("크기가 좀 작지만 맛있습니다!")
+                .retailProduct(retailProductList.get(1))
+                .origin("미국")
+                .producer("감자회사")
+                .storageMethod("상온")
+                .weightPerUnit("5kg")
+                .composition("감자 5kg")
+                .mainImagePath(imageFileVO.getMainImageUrlPath())
+                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
+                .build());
+
+        imageFileVO = fileService.makeImageFileVO(3L);
+        title = "국내산 햇 꿀밤고구마, 3kg, 1박스";
+        list.add(Product.builder()
+                .user(userList.get(1))
+                .title(title)
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .productionArea("부산")
+                .productionDate(LocalDate.now().minusDays(5))
+                .price(13200L)
+                .introduction("해남꿀고구마 유명한거 다들 아시죠?\n" +
+                        "그중 저희 가문의 영광 고구마가 제일인것도 아시죠오?\n\n" +
+                        "비옥한 황토밭에서 해풍맞고 자란 해남 꿀고무마!\n\n" +
+                        "한번 맛보세요.")
+                .retailProduct(retailProductList.get(2))
+                .origin("국내산")
+                .producer("해남화산농협")
+                .storageMethod("상온보관")
+                .weightPerUnit("3kg")
+                .composition("고구마 3kg, 1개")
+                .mainImagePath(imageFileVO.getMainImageUrlPath())
+                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
+                .build());
+
+        return list;
+    }
+
     private List<RetailProduct> getRetailProductList() {
         List<RetailProduct> list = Lists.newArrayList();
 
@@ -136,69 +206,6 @@ public class InitService {
                 .twoWeekAvgPrice("5,809")
                 .oneMonthAvgPrice("5,736")
                 .oneYearAvgPrice("4,289")
-                .build());
-
-        return list;
-    }
-
-    private List<Product> getProductList(List<User> userList, List<RetailProduct> retailProductList) throws FileNotFoundException {
-        List<Product> list = Lists.newArrayList();
-
-        ImageFileVO imageFileVO = fileService.makeImageFileVO(1L);
-        list.add(Product.builder()
-                .user(userList.get(1))
-                .title("못난이 사과")
-                .category(CategoryType.AGRICULTURAL_PRODUCTS)
-                .productionArea("광주")
-                .productionDate(LocalDate.now().minusDays(100))
-                .price(10000L)
-                .introduction("흠집이 좀 있는데 단맛이 많아서 일반사과랑 맛이 똑같습니다.")
-                .retailProduct(retailProductList.get(0))
-                .origin("국내산")
-                .producer("해남화산농협")
-                .storageMethod("냉장고")
-                .weightPerUnit("3kg")
-                .composition("사과 3kg")
-                .mainImagePath(imageFileVO.getMainImageUrlPath())
-                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
-                .build());
-
-        imageFileVO = fileService.makeImageFileVO(2L);
-        list.add(Product.builder()
-                .user(userList.get(1))
-                .title("못난이 감자")
-                .category(CategoryType.AGRICULTURAL_PRODUCTS)
-                .productionArea("대구")
-                .productionDate(LocalDate.now().minusDays(10))
-                .price(20000L)
-                .introduction("크기가 좀 작지만 맛있습니다!")
-                .retailProduct(retailProductList.get(1))
-                .origin("미국")
-                .producer("감자회사")
-                .storageMethod("상온")
-                .weightPerUnit("5kg")
-                .composition("감자 5kg")
-                .mainImagePath(imageFileVO.getMainImageUrlPath())
-                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
-                .build());
-
-        imageFileVO = fileService.makeImageFileVO(3L);
-        list.add(Product.builder()
-                .user(userList.get(1))
-                .title("못난이 고구마")
-                .category(CategoryType.AGRICULTURAL_PRODUCTS)
-                .productionArea("부산")
-                .productionDate(LocalDate.now().minusDays(50))
-                .price(30000L)
-                .introduction("에어프라이어에 해서 먹으면 맛있습니다~")
-                .retailProduct(retailProductList.get(2))
-                .origin("국내산")
-                .producer("충남농협")
-                .storageMethod("냉장고")
-                .weightPerUnit("2kg")
-                .composition("고구마 2kg")
-                .mainImagePath(imageFileVO.getMainImageUrlPath())
-                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
                 .build());
 
         return list;
