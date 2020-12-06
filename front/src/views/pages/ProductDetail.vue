@@ -41,7 +41,7 @@
             <BaseCard heading="'생표고버섯'의 시세">
               <v-col cols="12" lg="12">
               <v-card>
-                <b style="color:red;">※ 시세대비 {{ productDetailData.pricePercent }}% 저렴합니다.</b>
+                <b style="color:red;">※ 시세대비 {{ 100 - productDetailData.pricePercent }}% 저렴합니다.</b>
                 <br/>
                 <br/>
                 <table  style="width:100%">
@@ -173,7 +173,7 @@
                     가격 :
                   </td>
                   <td style="width: 37%; text-align: right;">
-                    <b style="font-size: 20px;">{{productDetailData.price * cnt}}원</b>
+                    <b style="font-size: 20px;">{{comma(productDetailData.price * cnt)}}원</b>
                   </td>
                   <td style="text-align: right;">
                     <v-btn fab small color="primary" @click="cntReduce()">
@@ -212,7 +212,7 @@
             <v-row>
               <v-col cols="12">
                 <center><h3>결제를 위한 지문인식을 진행합니다.</h3><br/>
-                <h2>{{productDetailData.price * cnt}}원</h2><br/>
+                <h2>{{ comma(productDetailData.price * cnt) }}원</h2><br/>
                 <img src="img/jimoon.png" style="width:50px;"/></center>
               </v-col>
               <v-col cols="12">
@@ -384,6 +384,9 @@ export default {
           BUS.$emit('alertModalOpen', result.data.message);
         }
       })
+    },
+    comma(x){
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
     getProductDetailData(){
       let vm = this;

@@ -22,7 +22,7 @@
               <small class="blue-grey--text text--darken-2">{{ item.productionArea }} | {{ item.productionDate }} 이후</small><br/>
               <b style="color:#fdd835;font-size: 16px;text-shadow: 1px 1px 3px gray">{{ ranStar(item.reviewCount) }}</b>
               <small class="blue-grey--text text--darken-2">({{ item.reviewCount }})</small><br/>
-              <b style="font-size: 24px;">{{ item.price }}원</b> <i style="text-decoration:line-through;">{{ item.retailProduct.todayAvgPrice }}</i>
+              <b style="font-size: 24px;">{{ comma(item.price) }}원</b> <i style="text-decoration:line-through;">{{ item.retailProduct.todayAvgPrice }}</i>
             </v-col>
             <v-col cols="6" style="text-align: right;" @click="goProductDetail(item.id)">
               <img v-bind:src="'download/' + item.id + '_thumbnailImage.jpg'" style="max-width: 128px;border-radius: 7px;
@@ -38,7 +38,7 @@
                   icon="mdi-clock-fast"
                   border="left"
               >
-                <b>빅데이터</b> 고구마의 현재 시세는 1kg 당 {{ item.retailProduct.todayAvgPrice }}원 입니다. 이 상품은 시세보다 <b style="color:#f76707; font-size: 24px">{{ item.pricePercent }}%</b> 저렴해요!
+                <b>빅데이터</b> 고구마의 현재 시세는 1kg 당 {{ comma(item.retailProduct.todayAvgPrice) }}원 입니다. 이 상품은 시세보다 <b style="color:#f76707; font-size: 24px">{{ 100 - item.pricePercent }}%</b> 저렴해요!
               </v-alert>
             </v-col>
           </v-row>
@@ -145,6 +145,9 @@ export default {
   methods: {
     goProductDetail(id){
       location.href="/#/pages/productDetail/" + id;
+    },
+    comma(x){
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
     getProductData(){
       let vm = this;

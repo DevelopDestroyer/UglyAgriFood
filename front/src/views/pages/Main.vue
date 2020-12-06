@@ -81,7 +81,7 @@
         <div style="width:100%; display: flex;">
           <div style="flex: 1;">
           </div>
-          <div style="width:280px;">
+          <div style="width:280px;" @click="goBlog();">
             <image-slider style="height:140px;">
               <transition-group name='fade' tag='div'>
                 <div
@@ -155,7 +155,7 @@
                         ({{item.reviewCount}})
                       </h6>
                       <h6 class="op-5 font-weight-regular" style="font-size:10px;">시세 평균 <span style="text-decoration:line-through; font-size: 10px;"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
-                      <h4 style="font-size: 16px;"><b style="color:#f76707; font-size: 18px;">{{ item.pricePercent }}%</b> {{item.price}}원</h4>
+                      <h4 style="font-size: 16px;"><b style="color:#f76707; font-size: 18px;">{{ 100 - item.pricePercent }}%</b> {{comma(item.price)}}원</h4>
                     </div>
                   </td>
 
@@ -211,7 +211,7 @@
                         ({{ item.reviewCount }})
                       </h6>
                       <h6 class="op-5 font-weight-regular" style="font-size:10px;">시세 평균 <span style="text-decoration:line-through"> {{item.retailProduct.todayAvgPrice}}원</span></h6>
-                      <h4 style="font-size: 16px;"><b style="color:#f76707; font-size: 18px;">{{ item.pricePercent }}%</b> {{item.price}}원</h4>
+                      <h4 style="font-size: 16px;"><b style="color:#f76707; font-size: 18px;">{{ 100 - item.pricePercent }}%</b> {{comma(item.price)}}원</h4>
                     </div>
                   </td>
 
@@ -287,6 +287,9 @@
           prev: function() {
             this.currentNumber -= 1
           },
+          goBlog(){
+            location.href="https://matmanjohne.tistory.com/";
+          },
           goProductDetail(param){
             location.href= "/#/pages/ProductDetail/"+param;
           },
@@ -294,15 +297,14 @@
           goProductList(param){
             location.href= "/#/pages/ProductList/"+param;
           },
+          comma(x){
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          },
           getMainData(){
             let vm = this;
             this.$store.dispatch('GET_MAIN_DATA', {
               'data':'getMaindata Req'
             }).then((result) => {
-              //console.log("결과" + result);//바깥 리설트
-              //console.log("결과2" + result.statusCode);//바깥 리설트
-              //console.log("결과3" + result.data.statusCode);//바깥 리설트
-              //console.log("결과" + result.data);//바깥 리설트
               if(result.data.statusCode == 'OK'){
                 console.log("정상응답");
                 vm.recommendProductList = result.data.data.recommendProductList;
