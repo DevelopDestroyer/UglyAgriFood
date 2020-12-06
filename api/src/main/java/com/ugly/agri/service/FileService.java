@@ -53,10 +53,10 @@ public class FileService {
         log.info("basePath = {}, fullPath = {}", resourcesLocation, fullPath);
         return ImageFileVO.builder()
                 .product_id(id)
-                .mainImageFullPath(fullPath + File.separator + id + MAIN_NAME)
-                .thumbnailImageFullPath(fullPath + File.separator + id + THUMBNAIL_NAME)
-                .mainImageUrlPath(resourcesUriPath + File.separator + id + MAIN_NAME)
-                .thumbnailImageUrlPath(resourcesUriPath+ File.separator + id + THUMBNAIL_NAME)
+                .mainImageFullPath(fullPath + "/" + id + MAIN_NAME)
+                .thumbnailImageFullPath(fullPath + "/" + id + THUMBNAIL_NAME)
+                .mainImageUrlPath(resourcesUriPath + "/" + id + MAIN_NAME)
+                .thumbnailImageUrlPath(resourcesUriPath+ "/" + id + THUMBNAIL_NAME)
                 .build();
     }
 }
