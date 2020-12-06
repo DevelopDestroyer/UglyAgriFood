@@ -13,9 +13,9 @@ export default new Vuex.Store({
         //product
         API_HOST: 'http://35.185.255.70:8080',
         isLogin: false,
-        userEmail : '',
-        userName : '비회원',
-        userSeq : '',
+        userEmail : 'lee',
+        userName : '이태호',
+        userSeq : 3,
 
         Sidebar_drawer: null,
         Customizer_drawer: false,
