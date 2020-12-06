@@ -244,21 +244,21 @@ public class InitService {
         list.add(Review.builder()
                 .user(userList.get(0))
                 .product(productList.get(0))
-                .content("난 관리자다")
+                .content("싼 가격에 잘 샀어요. 맛있어여.")
                 .grade(5)
                 .build());
 
         list.add(Review.builder()
                 .user(userList.get(1))
                 .product(productList.get(1))
-                .content("난 판매자다")
+                .content("흠집이 있지만, 맛만 좋네요. 굿!")
                 .grade(3)
                 .build());
 
         list.add(Review.builder()
                 .user(userList.get(2))
                 .product(productList.get(1))
-                .content("난 구매자다")
+                .content("맛만 좋네 앱 짱이네요. 자주 애용할게요!")
                 .grade(4)
                 .build());
 
