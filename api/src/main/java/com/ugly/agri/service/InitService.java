@@ -131,7 +131,7 @@ public class InitService {
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .productionArea("대구")
                 .productionDate(LocalDate.now().minusDays(10))
-                .price(12000L)
+                .price(8200L)
                 .introduction("크기가 좀 작지만 맛있습니다!")
                 .retailProduct(retailProductList.get(1))
                 .origin("미국")
@@ -144,14 +144,14 @@ public class InitService {
                 .build());
 
         imageFileVO = fileService.makeImageFileVO(3L);
-        title = "국내산 햇 꿀밤고구마, 3kg, 1박스";
+        title = "국내산 햇 꿀밤고구마, 1kg, 1박스";
         list.add(Product.builder()
                 .user(userList.get(1))
                 .title(title)
                 .category(CategoryType.AGRICULTURAL_PRODUCTS)
                 .productionArea("부산")
                 .productionDate(LocalDate.now().minusDays(5))
-                .price(13200L)
+                .price(5050L)
                 .introduction("해남꿀고구마 유명한거 다들 아시죠?\n" +
                         "그중 저희 가문의 영광 고구마가 제일인것도 아시죠오?\n\n" +
                         "비옥한 황토밭에서 해풍맞고 자란 해남 꿀고무마!\n\n" +
@@ -160,8 +160,48 @@ public class InitService {
                 .origin("국내산")
                 .producer("해남화산농협")
                 .storageMethod("상온보관")
-                .weightPerUnit("3kg")
-                .composition("고구마 3kg, 1개")
+                .weightPerUnit("1kg")
+                .composition("고구마 1kg, 1개")
+                .mainImagePath(imageFileVO.getMainImageUrlPath())
+                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
+                .build());
+
+        imageFileVO = fileService.makeImageFileVO(4L);
+        title = "맛있는 양배추, 1포기";
+        list.add(Product.builder()
+                .user(userList.get(1))
+                .title(title)
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .productionArea("충주")
+                .productionDate(LocalDate.now().minusDays(3))
+                .price(4000L)
+                .introduction("무농약으로 인증 받은 꼬꼬마 양배추입니다.")
+                .retailProduct(retailProductList.get(3))
+                .origin("국내산")
+                .producer("하늘과땅")
+                .storageMethod("냉장고")
+                .weightPerUnit("200G")
+                .composition("양배추 1포기")
+                .mainImagePath(imageFileVO.getMainImageUrlPath())
+                .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
+                .build());
+
+        imageFileVO = fileService.makeImageFileVO(5L);
+        title = "크기가 엄청 큰 맛있는 수박 입니다. 1개";
+        list.add(Product.builder()
+                .user(userList.get(1))
+                .title(title)
+                .category(CategoryType.AGRICULTURAL_PRODUCTS)
+                .productionArea("진주")
+                .productionDate(LocalDate.now().minusDays(6))
+                .price(12000L)
+                .introduction("상처가 좀 있지만 맛은 최고 입니다.")
+                .retailProduct(retailProductList.get(4))
+                .origin("국내산")
+                .producer("진주과일바구니")
+                .storageMethod("냉장고")
+                .weightPerUnit("800G")
+                .composition("수박 1개")
                 .mainImagePath(imageFileVO.getMainImageUrlPath())
                 .thumbnailImagePath(imageFileVO.getThumbnailImageUrlPath())
                 .build());
@@ -186,14 +226,14 @@ public class InitService {
 
         list.add(RetailProduct.builder()
                 .name("감자")
-                .kind("수미(100g)")
+                .kind("수미(1kg)")
                 .grade("상품")
-                .todayAvgPrice("300")
-                .oneDayAvgPrice("296")
-                .oneWeekAvgPrice("295")
-                .twoWeekAvgPrice("293")
-                .oneMonthAvgPrice("294")
-                .oneYearAvgPrice("217")
+                .todayAvgPrice("9300")
+                .oneDayAvgPrice("9296")
+                .oneWeekAvgPrice("9295")
+                .twoWeekAvgPrice("9293")
+                .oneMonthAvgPrice("9294")
+                .oneYearAvgPrice("9217")
                 .build());
 
         list.add(RetailProduct.builder()
@@ -206,6 +246,30 @@ public class InitService {
                 .twoWeekAvgPrice("5,809")
                 .oneMonthAvgPrice("5,736")
                 .oneYearAvgPrice("4,289")
+                .build());
+
+        list.add(RetailProduct.builder()
+                .name("양배추")
+                .kind("양배추(1포기)")
+                .grade("상품")
+                .todayAvgPrice("4,499")
+                .oneDayAvgPrice("4,646")
+                .oneWeekAvgPrice("5,713")
+                .twoWeekAvgPrice("5,992")
+                .oneMonthAvgPrice("6,186")
+                .oneYearAvgPrice("4,033")
+                .build());
+
+        list.add(RetailProduct.builder()
+                .name("수박")
+                .kind("수박(1개)")
+                .grade("상품")
+                .todayAvgPrice("17,294")
+                .oneDayAvgPrice("17,481")
+                .oneWeekAvgPrice("16,927")
+                .twoWeekAvgPrice("15,237")
+                .oneMonthAvgPrice("16,947")
+                .oneYearAvgPrice("25,503")
                 .build());
 
         return list;
