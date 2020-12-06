@@ -12,7 +12,7 @@ export default new Vuex.Store({
         //API_HOST: 'http://localhost:8080',
         //product
         API_HOST: 'http://35.185.255.70:8080',
-        isLogin: false,
+        isLogin: true,
         userEmail : 'lee',
         userName : '이태호',
         userSeq : 3,
