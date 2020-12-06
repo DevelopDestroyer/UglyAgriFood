@@ -30,27 +30,22 @@ public class InitService {
 
     private final FileService fileService;
 
-    public void setTestData() throws FileNotFoundException {
-        deleteDate();
-        insertDate();
+    public void setTestData() throws IOException {
         //        crawling();
-    }
 
-    private void deleteDate() {
-        reviewRepository.deleteAll();
-        orderRepository.deleteAll();
-        productRepository.deleteAll();
-        retailProductRepository.deleteAll();
-        userRepository.deleteAll();
-    }
-
-    private void insertDate() throws FileNotFoundException {
         List<User> userList = userRepository.saveAll(getUserList());
         List<Product> productList = productRepository.saveAll(
                 getProductList(userList, retailProductRepository.saveAll(getRetailProductList())));
         orderRepository.saveAll(getOrderList(userList, productList));
         reviewRepository.saveAll(getCommentList(userList, productList));
+    }
 
+    public void deleteDate() {
+        reviewRepository.deleteAll();
+        orderRepository.deleteAll();
+        productRepository.deleteAll();
+        retailProductRepository.deleteAll();
+        userRepository.deleteAll();
     }
 
     public void crawling() throws IOException {

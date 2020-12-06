@@ -23,6 +23,7 @@ public class InitController {
     @ApiOperation(value = "데이터 초기화 후 샘플데이터 넣기")
     @PostMapping("/data")
     public Response<String> initData() throws IOException {
+        initService.deleteDate();
         initService.setTestData();
         return Response.ok();
     }
