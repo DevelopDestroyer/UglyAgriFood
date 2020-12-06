@@ -188,7 +188,7 @@
                 <tr>
                   <td colspan="3" style="text-align: center;">
                     <br/>
-                    <v-btn class="text-capitalize mt-0 element-0" color="" style="margin-right: 10px;"><b style="font-size: 24px; color:#FF9999">♥</b>찜하기</v-btn>
+                    <v-btn @click="initAllData()" class="text-capitalize mt-0 element-0" color="" style="margin-right: 10px;"><b style="font-size: 24px; color:#FF9999">♥</b>찜하기</v-btn>
                     <v-btn dark color="success" style="width:60%" @click="postOrder()">구매하기</v-btn>
                   </td>
                 </tr>
@@ -325,6 +325,20 @@ export default {
     this.getProductDetailData();
   },
   methods :{
+    initAllData(){
+      if(confirm('[숨겨진 기능] 확인버튼을 누르면 모든 데이터를 초기화 합니다.') == true){
+        this.$store.dispatch('POST_INIT_DATA', {
+        }).then((result) => {
+          if(result.data.statusCode == 'OK'){
+            console.log("초기화 정상응답");
+            alert("모든 데이터가 초기화 완료되었습니다.");
+          }
+          else{
+            BUS.$emit('alertModalOpen', result.data.message);
+          }
+        })
+      }
+    },
     postOrder(){
       this.billingModal = true;
       let vm = this;

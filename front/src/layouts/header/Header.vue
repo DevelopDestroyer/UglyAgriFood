@@ -102,13 +102,19 @@
       </template>
       <v-list>
         <v-list-item @click="href">
+          <v-list-item-title @click="goHome()">상품소개</v-list-item-title>
+        </v-list-item>
+        <v-list-item @click="href">
           <v-list-item-title @click="dialog=true" v-if="!this.$store.state.isLogin">로그인</v-list-item-title>
           <v-list-item-title @click="logout()" v-else>로그아웃</v-list-item-title>
         </v-list-item>
+        <v-list-item @click="href" v-if="!this.$store.state.isLogin">
+          <v-list-item-title @click="goJoin()">회원가입</v-list-item-title>
+        </v-list-item>
+
         <v-list-item @click="href" v-if="this.$store.state.isLogin">
           <v-list-item-title @click="goMypage()">마이페이지</v-list-item-title>
         </v-list-item>
-
       </v-list>
     </v-menu>
   </v-app-bar>
@@ -162,6 +168,12 @@ export default {
     ...mapMutations({
       setSidebarDrawer: "SET_SIDEBAR_DRAWER"
     }),
+    goJoin(){
+      location.href="/#/pages/join";
+    },
+    goHome(){
+      location.href="/";
+    },
     goMypage(){
       location.href="/#/pages/myInfo";
     },

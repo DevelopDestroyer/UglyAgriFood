@@ -9,9 +9,9 @@ export default new Vuex.Store({
     components: { BUS },
     state: {
         //local
-        //API_HOST: 'http://localhost:8080',
+        API_HOST: 'http://localhost:8080',
         //product
-        API_HOST: 'http://35.185.255.70:8080',
+        //API_HOST: 'http://35.185.255.70:8080',
         isLogin: false,
         userEmail : '',
         userName : '비회원',
@@ -39,6 +39,21 @@ export default new Vuex.Store({
     },
     actions: {
         ///////////////////////////////////////////////////////////
+        //    * SPECIAL API
+        ///////////////////////////////////////////////////////////
+        POST_INIT_DATA (context, payload) {
+            return Axios.post(this.state.API_HOST + '/api/init/data', {
+            })
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                })
+        },
+        ///////////////////////////////////////////////////////////
         //    * REVIEW API
         ///////////////////////////////////////////////////////////
         GET_REVIEW_DETAIL_DATA (context, payload) {
@@ -56,6 +71,17 @@ export default new Vuex.Store({
         ///////////////////////////////////////////////////////////
         //    * PRODUCT API
         ///////////////////////////////////////////////////////////
+        GET_MY_SALES_PRODUCT_DATA (context, payload) {
+            return Axios.get(this.state.API_HOST + '/api/products?userId=' + this.state.userSeq)
+                .then((result) => {
+                    console.log(payload.data);
+                    return result
+                })
+                .catch(error => {
+                    //에러팝업창
+                    console.log(error);
+                })
+        },
         GET_PRODUCT_DATA (context, payload) {
             let type = payload.type; //all, title, category
             let param = '';
